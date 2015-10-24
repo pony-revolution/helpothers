@@ -38,6 +38,7 @@ class GatheringCenter(TimeStampedModel):
         default='',
         help_text=_('Any additional information about this specific gathering center')
         )
+    published = models.BooleanField(blank=True, default=False)
     # TODO add information about when this center is active
     # TODO add infomartion about what is needed the most
 
@@ -53,6 +54,7 @@ class Resource(TimeStampedModel):
     description = models.TextField(blank=True, default='')
     url = models.URLField(max_length=500, blank=True, default='')  # TODO do we need to worry about len(url) > 500 ?
     sticky = models.BooleanField(blank=True, default=False)
+    published = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
         return self.name
