@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Loek van Gent <loek@1procentclub.nl>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Help Others\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-24 14:02-0500\n"
+"PO-Revision-Date: 2015-10-24 18:36+0000\n"
+"Last-Translator: Loek van Gent <loek@1procentclub.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/pony-revolution/help-others/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: helpothers/templates/menu.html:5
+msgid "Home"
+msgstr "Start"
+
+#: listings/models.py:31
+msgid "If this center has any special name"
+msgstr "Heeft dit inzamelpunt een speciale naam"
+
+#: listings/models.py:39
+msgid "Any additional information about this specific gathering center"
+msgstr "Eventueel extra informatie over dit inzamelpunt"
