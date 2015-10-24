@@ -1,4 +1,5 @@
 # Django settings for helpothers project.
+from secrets import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
