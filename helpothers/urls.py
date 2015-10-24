@@ -8,7 +8,7 @@ from helpothers.views import HomeView, ProfileView
 admin.autodiscover()
 
 
-urlpatterns = patterns(
+urlpatterns = i18n_patterns(
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'accounts/profile', ProfileView.as_view(), name='account-profile'),
     url('', include('social.apps.django_app.urls', namespace='social')),
