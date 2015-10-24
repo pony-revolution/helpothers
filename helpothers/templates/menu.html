@@ -1,0 +1,12 @@
+{% load i18n %}
+<ul>
+    <li>
+        <a href="{% url 'home' %}">
+            {%  trans 'Home' %}
+        </a>
+    </li>
+    <li>
+        {% include 'login.html' %}
+    </li>
+</ul>
+

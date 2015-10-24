@@ -61,5 +61,6 @@ target/
 
 # Editors
 .idea
-.idea/*
 
+# Sass
+.sass-cache

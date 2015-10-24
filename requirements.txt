@@ -3,3 +3,5 @@ django-geoposition==0.2.2
 django-model-utils==2.3.1
 psycopg2==2.6.1
 python-social-auth==0.2.13
+transifex-client==0.10
+
