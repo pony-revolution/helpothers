@@ -126,7 +126,8 @@ INSTALLED_APPS = (
 
     'social.apps.django_app.default',
 
-    'helpothers'
+    'helpothers',
+    'listings',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
