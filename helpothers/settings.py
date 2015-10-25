@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'social.apps.django_app.default',
+    'geoposition',
 
     'helpothers',
     'listings',
