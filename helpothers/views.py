@@ -6,6 +6,10 @@ from django.views.generic.detail import DetailView
 class HomeView(TemplateView):
     template_name = 'home.html'
 
+class LoginView(TemplateView):
+    template_name = 'login.html'
+
+
 
 class ProfileView(DetailView):
     model = get_user_model()
