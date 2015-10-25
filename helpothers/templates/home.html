@@ -1,5 +1,30 @@
 {%  extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-    <h1>HelpOthers</h1>
+    <h1>{% trans 'Help Others' %}</h1>
+    <div>
+        <ul>
+            {% for center in gathering_centers %}
+                <li>
+                    <a href="{% url 'gathering_center' center.pk %}">
+                        <h2>{{ center.city }}</h2> - 
+                        {% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <ul>
+            {% for resource in resources %}
+                <li>
+                    <a href="{% url 'resource' resource.pk %}">
+                        <h2>{{ resource.name }}</h2> - 
+                        {{ resource.description|truncatechars:140 }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

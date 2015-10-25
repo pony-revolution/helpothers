@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{{ object.city }} - {% if object.location_name %}{{ object.location_name }}{% else %}{{ object.address }}{% endif %}</h1>
+{% endblock %}
