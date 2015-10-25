@@ -18,6 +18,8 @@ class City(models.Model):
 
     class Meta:
         unique_together = ('name', 'region')
+        verbose_name = _('City')
+        verbose_name_plural = _('Cities')
 
     def __unicode__(self):
         return self.name
