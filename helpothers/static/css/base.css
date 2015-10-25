@@ -24,4 +24,21 @@ body {
   padding: 10px;
   color: #444; }
 
+ul.resources {
+  list-style: none; }
+  ul.resources li {
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #ddccaa;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3); }
+    ul.resources li a {
+      color: #222;
+      text-decoration: none; }
+      ul.resources li a h2 {
+        padding: 0;
+        margin: 0; }
+    ul.resources li.new {
+      background: transparent;
+      border: 2px dashed #ddccaa; }
+
 /*# sourceMappingURL=base.css.map */
