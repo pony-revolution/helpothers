@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
+from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 from listings.models import GatheringCenter, Resource
 
@@ -33,6 +35,21 @@ class GatheringCenterView(DetailView):
     template_name = 'listings/gathering_center.html'
 
 
-class ResourceView(DetailView):
+class ResourceDetailView(DetailView):
     model = Resource
-    template_name = 'listings/resource.html'
+    template_name = 'listings/resources/detail.html'
+
+
+class ResourceCreateView(CreateView):
+    model = Resource
+    template_name = 'listings/resources/create.html'
+    fields = ['name', 'description', 'url']
+
+    def get_success_url(self):
+        return reverse('resource-review')
+
+class ReviewView(TemplateView):
+    """
+    Page to notify the user that the resource will be reviewed.
+    """
+    template_name = 'listings/resources/review.html'

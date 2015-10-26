@@ -16,7 +16,8 @@
         </ul>
     </div>
     <div>
-        <ul>
+        <h2>{% trans 'Resources & links' %}</h2>
+        <ul class="resources">
             {% for resource in resources %}
                 <li>
                     <a href="{% url 'resource' resource.pk %}">
@@ -25,6 +26,11 @@
                     </a>
                 </li>
             {% endfor %}
+            <li class="new">
+                <a href="{% url 'resource-add' %}">
+                    {% trans 'Suggest a resource or link' %}
+                </a>
+            </li>
         </ul>
     </div>
 {% endblock %}

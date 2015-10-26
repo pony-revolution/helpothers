@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <h3>{% trans 'Thanks!' %}</h3>
+    <p>
+        {% blocktrans %}Thank you for your submission. We'll review it as soon as possible.{% endblocktrans %}
+    </p>
+{% endblock %}

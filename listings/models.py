@@ -18,6 +18,8 @@ class City(models.Model):
 
     class Meta:
         unique_together = ('name', 'region')
+        verbose_name = _('City')
+        verbose_name_plural = _('Cities')
 
     def __unicode__(self):
         return self.name
@@ -50,9 +52,9 @@ class Resource(TimeStampedModel):
     """
     Model for storing various helpful resources - links, other websites, etc.
     """
-    name = models.CharField(max_length=255)
-    description = models.TextField(blank=True, default='')
-    url = models.URLField(max_length=500, blank=True, default='')  # TODO do we need to worry about len(url) > 500 ?
+    name = models.CharField(_('Name'), max_length=255)
+    description = models.TextField(_('Description'), blank=True, default='')
+    url = models.URLField(_('URL'), max_length=500, blank=True, default='')  # TODO do we need to worry about len(url) > 500 ?
     sticky = models.BooleanField(blank=True, default=False)
     published = models.BooleanField(blank=True, default=False)
 
