@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <h1>Profile</h1>
-    {{ profile.username }} <br />
-    {{ profile.first_name }} {{ profile.last_name }}<br/>
-    {{ profile.email }}
+    <section class="bg-primary" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        My profile
+                    </h2>
+                    <table>
+                        {{ profile.as_table }}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
