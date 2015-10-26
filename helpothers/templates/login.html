@@ -1,13 +1,7 @@
-{% if user and not user.is_anonymous %}
-    {{ user.get_full_name }}
-    <a href="/logout">Logout</a>
-{% else %}
+{%  extends 'base.html' %}
+
+{% block content %}
     <ul>
-        <li>
-            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-                Login
-            </a>
-        </li>
         <li>
             <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
                 Login with Facebook
@@ -19,4 +13,4 @@
             </a>
         </li>
     </ul>
-{% endif %}
+{% endblock %}
