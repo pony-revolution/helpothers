@@ -15,6 +15,10 @@ class HomeView(TemplateView):
         return context
 
 
+class LoginView(TemplateView):
+    template_name = 'login.html'
+
+
 class ProfileView(DetailView):
     model = get_user_model()
     context_object_name = 'profile'
