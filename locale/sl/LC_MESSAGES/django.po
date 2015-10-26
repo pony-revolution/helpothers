@@ -1,30 +1,84 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Help Others\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-24 14:02-0500\n"
+"POT-Creation-Date: 2015-10-26 02:44-0500\n"
 "PO-Revision-Date: 2015-10-24 18:31+0000\n"
 "Last-Translator: Loek van Gent <loek@1procentclub.nl>\n"
-"Language-Team: Slovenian (http://www.transifex.com/pony-revolution/help-others/language/sl/)\n"
+"Language-Team: Slovenian (http://www.transifex.com/pony-revolution/help-"
+"others/language/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
+
+#: helpothers/templates/home.html:5
+msgid "Help Others"
+msgstr ""
+
+#: helpothers/templates/home.html:19
+msgid "Resources & links"
+msgstr ""
+
+#: helpothers/templates/home.html:31
+msgid "Suggest a resource or link"
+msgstr ""
 
 #: helpothers/templates/menu.html:5
 msgid "Home"
 msgstr ""
 
-#: listings/models.py:31
+#: listings/models.py:21
+msgid "City"
+msgstr ""
+
+#: listings/models.py:22
+msgid "Cities"
+msgstr ""
+
+#: listings/models.py:33
 msgid "If this center has any special name"
 msgstr ""
 
-#: listings/models.py:39
+#: listings/models.py:41
 msgid "Any additional information about this specific gathering center"
+msgstr ""
+
+#: listings/models.py:55
+msgid "Name"
+msgstr ""
+
+#: listings/models.py:56
+msgid "Description"
+msgstr ""
+
+#: listings/models.py:57
+msgid "URL"
+msgstr ""
+
+#: listings/templates/listings/resources/create.html:5
+msgid "Add new resource or link"
+msgstr ""
+
+#: listings/templates/listings/resources/create.html:11
+msgid "Add"
+msgstr ""
+
+#: listings/templates/listings/resources/review.html:5
+msgid "Thanks!"
+msgstr ""
+
+#: listings/templates/listings/resources/review.html:7
+msgid ""
+"\n"
+"            Thank you for your submission. We'll review it as soon as "
+"possible.\n"
+"        "
 msgstr ""
