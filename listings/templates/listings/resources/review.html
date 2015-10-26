@@ -2,8 +2,20 @@
 {% load i18n %}
 
 {% block content %}
-    <h3>{% trans 'Thanks!' %}</h3>
-    <p>
-        {% blocktrans %}Thank you for your submission. We'll review it as soon as possible.{% endblocktrans %}
-    </p>
+
+    <section class="bg-primary" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans 'Thanks!' %}
+                    </h2>
+                    <p>
+                        {% blocktrans %}Thank you for your submission. We'll review it as soon as possible.{% endblocktrans %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

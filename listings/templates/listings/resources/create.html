@@ -2,12 +2,24 @@
 {% load i18n %}
 
 {% block content %}
-    <h3>{% trans "Add new resource or link" %}</h3>
-    <form method="post">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="{% trans 'Add' %}" />
-    </form>
+
+    <section class="bg-primary" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans "Add new resource or link" %}
+                    </h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <table>
+                            {{ form.as_table }}
+                        </table>
+                        <input type="submit" value="{% trans 'Add' %}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {%  endblock %}
