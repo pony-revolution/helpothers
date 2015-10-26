@@ -43,9 +43,21 @@
                         </ul>
 
                     {% else %}
-                        <a href="{% url 'login' %}?next={{ request.path }}">
+                        <a  data-toggle="dropdown" href="#">
                             {% trans 'Log in' %}
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                                    Login with Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+                                    Login with Twitter
+                                </a>
+                            </li>
+                        </ul>
                     {% endif %}
                 </li>
             </ul>
