@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<section class="bg-primary" id="centers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">
+                    {% trans 'Gathering centers' %}
+                </h2>
+                <ul>
+                    {% for center in gathering_centers %}
+                        <li>
+                            <a href="{% url 'gathering_center' center.pk %}">
+                                <h2>{{ center.city }}</h2> -
+                                {% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
