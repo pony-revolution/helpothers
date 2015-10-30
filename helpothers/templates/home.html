@@ -32,12 +32,17 @@
                     <ul>
                         {% for center in gathering_centers %}
                             <li>
-                                <a href="{% url 'gathering_center' center.pk %}">
+                                <a href="{% url 'gathering-center' center.pk %}">
                                     <h2>{{ center.city }}</h2> -
                                     {% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}
                                 </a>
                             </li>
                         {% endfor %}
+                        <li class="new">
+                            <a href="{% url 'gathering-center-add' %}">
+                                {% trans 'Add a gathering center' %}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

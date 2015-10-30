@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <section class="bg-primary" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans "Add new gathering center" %}
+                    </h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <table>
+                            {{ form.as_table }}
+                        </table>
+                        <input type="submit" value="{% trans 'Add' %}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{%  endblock %}
