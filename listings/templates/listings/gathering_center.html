@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n leaflet_tags %}
+
+{% block extrahead %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+{% endblock extrahead %}
 
 {% block content %}
     <h1>{{ object.city }} - {% if object.location_name %}{{ object.location_name }}{% else %}{{ object.address }}{% endif %}</h1>
+    {% leaflet_map "main" callback="main_map_init" %}
+
+    <script type="text/javascript">
+        function main_map_init (map, options) {
+            L.geoJson({
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [{{object.geoposition.longitude}}, {{object.geoposition.latitude}}]
+              },
+              "properties": {
+                "name": "{% if object.location_name %}{{ object.location_name }}{% else %}{{ object.address }}{% endif %}"
+              }
+            }).addTo(map);
+            map.setZoom(16);
+            map.panTo([{{object.geoposition.latitude}}, {{object.geoposition.longitude}}]);
+        }
+    </script>
 {% endblock %}
