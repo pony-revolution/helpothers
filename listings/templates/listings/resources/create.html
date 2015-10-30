@@ -2,9 +2,12 @@
 {% load i18n %}
 
 {% block content %}
+    <h3>{% trans "Add new resource or link" %}</h3>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <table>
+            {{ form.as_table }}
+        </table>
         <input type="submit" value="{% trans 'Add' %}" />
     </form>
 {%  endblock %}

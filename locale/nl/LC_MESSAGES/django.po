@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Help Others\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-24 14:02-0500\n"
-"PO-Revision-Date: 2015-10-24 18:36+0000\n"
+"POT-Creation-Date: 2015-10-26 02:44-0500\n"
+"PO-Revision-Date: 2015-10-26 07:48+0000\n"
 "Last-Translator: Loek van Gent <loek@1procentclub.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/pony-revolution/help-others/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -18,14 +18,65 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: helpothers/templates/home.html:5
+msgid "Help Others"
+msgstr ""
+
+#: helpothers/templates/home.html:19
+msgid "Resources & links"
+msgstr "Websites"
+
+#: helpothers/templates/home.html:31
+msgid "Suggest a resource or link"
+msgstr "Weet je zelf nog een nuttige website?"
+
 #: helpothers/templates/menu.html:5
 msgid "Home"
 msgstr "Start"
 
-#: listings/models.py:31
+#: listings/models.py:21
+msgid "City"
+msgstr "Stad"
+
+#: listings/models.py:22
+msgid "Cities"
+msgstr "Steden"
+
+#: listings/models.py:33
 msgid "If this center has any special name"
 msgstr "Heeft dit inzamelpunt een speciale naam"
 
-#: listings/models.py:39
+#: listings/models.py:41
 msgid "Any additional information about this specific gathering center"
 msgstr "Eventueel extra informatie over dit inzamelpunt"
+
+#: listings/models.py:55
+msgid "Name"
+msgstr "Naam"
+
+#: listings/models.py:56
+msgid "Description"
+msgstr "Omschrijving"
+
+#: listings/models.py:57
+msgid "URL"
+msgstr "URL"
+
+#: listings/templates/listings/resources/create.html:5
+msgid "Add new resource or link"
+msgstr "Voeg een website toe"
+
+#: listings/templates/listings/resources/create.html:11
+msgid "Add"
+msgstr "Toevoegen"
+
+#: listings/templates/listings/resources/review.html:5
+msgid "Thanks!"
+msgstr "Bedankt!"
+
+#: listings/templates/listings/resources/review.html:7
+msgid ""
+"\n"
+"            Thank you for your submission. We'll review it as soon as possible.\n"
+"        "
+msgstr "Bedankt voor je bijdrage. We checken het zo snel mogelijk."
