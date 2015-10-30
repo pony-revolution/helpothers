@@ -7,8 +7,19 @@
 {% endblock extrahead %}
 
 {% block content %}
-    <h1>{{ object.city }} - {% if object.location_name %}{{ object.location_name }}{% else %}{{ object.address }}{% endif %}</h1>
-    {% leaflet_map "main" callback="main_map_init" %}
+    <section class="bg-primary" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+
+                    <h1>{{ object.city }} - {% if object.location_name %}{{ object.location_name }}{% else %}{{ object.address }}{% endif %}</h1>
+                    {% if object.geoposition %}
+                        {% leaflet_map "main" callback="main_map_init" %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script type="text/javascript">
         function main_map_init (map, options) {

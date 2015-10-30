@@ -32,7 +32,7 @@ class ProfileView(DetailView):
 
 class GatheringCenterView(DetailView):
     model = GatheringCenter
-    template_name = 'listings/gathering_center.html'
+    template_name = 'listings/centers/detail.html'
 
 
 class ResourceDetailView(DetailView):
