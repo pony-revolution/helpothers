@@ -1,12 +1,14 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 
+from django_countries.fields import CountryField
 from geoposition.fields import GeopositionField
 from model_utils.models import TimeStampedModel
 
 
 class Region(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    country = CountryField(null=True)
 
     def __unicode__(self):
         return self.name
@@ -57,6 +59,7 @@ class Resource(TimeStampedModel):
     url = models.URLField(_('URL'), max_length=500, blank=True, default='')  # TODO do we need to worry about len(url) > 500 ?
     sticky = models.BooleanField(blank=True, default=False)
     published = models.BooleanField(blank=True, default=False)
+    country = CountryField(null=True)
 
     def __unicode__(self):
         return self.name
