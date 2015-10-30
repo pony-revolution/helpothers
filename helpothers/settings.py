@@ -134,6 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'leaflet',
+    'geoposition',
     'social.apps.django_app.default',
 
     'helpothers',
@@ -189,4 +191,8 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+LEAFLET_CONFIG = {
+    'DEFAULT_ZOOM': 16,
 }
