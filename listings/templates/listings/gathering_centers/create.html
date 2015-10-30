@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load bootstrap %}
 
 {% block content %}
 
-    <section class="bg-primary" id="centers">
+    <section class="bg-dark" id="centers">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -13,9 +14,9 @@
                     <form method="post">
                         {% csrf_token %}
                         <table>
-                            {{ form.as_table }}
+                            {{ form|bootstrap }}
                         </table>
-                        <input type="submit" value="{% trans 'Add' %}" />
+                        <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add' %}" />
                     </form>
                 </div>
             </div>
