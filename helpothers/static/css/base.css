@@ -1,44 +1,51 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif; }
-
+  font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
 #navigation {
   padding: 10px;
   background-color: burlywood;
-  border-bottom: 2px solid sienna; }
-  #navigation ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; }
-    #navigation ul li {
-      display: inline-block; }
-      #navigation ul li a {
-        display: inline-block;
-        padding: 4px;
-        border: 1px solid #678;
-        text-decoration: none;
-        color: aliceblue; }
-
+  border-bottom: 2px solid sienna;
+}
+#navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#navigation ul li {
+  display: inline-block;
+}
+#navigation ul li a {
+  display: inline-block;
+  padding: 4px;
+  border: 1px solid #678;
+  text-decoration: none;
+  color: aliceblue;
+}
 #content {
   padding: 10px;
-  color: #444; }
-
+  color: #444;
+}
 ul.resources {
-  list-style: none; }
-  ul.resources li {
-    padding: 8px;
-    margin-bottom: 10px;
-    background: #ddccaa;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3); }
-    ul.resources li a {
-      color: #222;
-      text-decoration: none; }
-      ul.resources li a h2 {
-        padding: 0;
-        margin: 0; }
-    ul.resources li.new {
-      background: transparent;
-      border: 2px dashed #ddccaa; }
-
-/*# sourceMappingURL=base.css.map */
+  list-style: none;
+}
+ul.resources li {
+  padding: 8px;
+  margin-bottom: 10px;
+  background: #aaffaa;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+ul.resources li a {
+  color: #222;
+  text-decoration: none;
+}
+ul.resources li a h2 {
+  padding: 0;
+  margin: 0;
+}
+ul.resources li.new {
+  background: transparent;
+  border: 2px dashed #aaffaa;
+  box-shadow: none;
+}
