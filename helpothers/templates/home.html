@@ -22,7 +22,7 @@
 
 {% block content %}
 
-    <section class="bg-primary" id="centers">
+    <section id="centers">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -39,7 +39,7 @@
                             </li>
                         {% endfor %}
                         <li class="new">
-                            <a href="{% url 'gathering-center-add' %}">
+                            <a href="{% url 'gathering-center-add' %}" class="btn btn-primary btn-xl page-scroll">
                                 {% trans 'Add a gathering center' %}
                             </a>
                         </li>
@@ -50,7 +50,7 @@
     </section>
 
 
-    <section class="bg-primary" id="resources">
+    <section class="bg-light" id="resources">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -67,7 +67,7 @@
                             </li>
                         {% endfor %}
                         <li class="new">
-                            <a href="{% url 'resource-add' %}">
+                            <a href="{% url 'resource-add' %}" class="btn btn-primary btn-xl page-scroll">
                                 {% trans 'Suggest a resource or link' %}
                             </a>
                         </li>
