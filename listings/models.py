@@ -45,7 +45,12 @@ class GatheringCenter(TimeStampedModel):
         help_text=_('Any additional information about this specific gathering center')
         )
     published = models.BooleanField(blank=True, default=False)
-    # TODO add information about when this center is active
+    hours = models.TextField(blank=True)
+    most_needed = MarkupField(
+        blank=True,
+        default='',
+        default_markup_type='markdown',
+    )
     # TODO add infomartion about what is needed the most
 
     def __unicode__(self):
