@@ -42,8 +42,16 @@ class GatheringCenterCreateView(CreateView):
     template_name = 'listings/gathering_centers/create.html'
     fields = ['location_name', 'address', 'city', 'description', 'geoposition']
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        response = super(GatheringCenterCreateView, self).form_valid(form)
+        assign_perm('listings.change_gatheringcenter', self.object.author, self.object)
+        assign_perm('listings.delete_gatheringcenter', self.object.author, self.object)
+        return response
+
     def get_success_url(self):
         return reverse('resource-review')
+
 
 class ResourceDetailView(DetailView):
     model = Resource

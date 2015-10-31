@@ -43,7 +43,6 @@ class ListingViewsTestCase(TestCase):
         self.assertEqual(resource.author, self.regularuser)
         self.assertTrue(self.regularuser.has_perm('listings.change_resource', resource))
 
-
     def test_gathering_center_add(self):
         url = reverse('gathering-center-add')
         response = self.client.get(url)
@@ -63,3 +62,5 @@ class ListingViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
 
         center = models.GatheringCenter.objects.get(location_name='Center name')
+        self.assertEqual(center.author, self.regularuser)
+        self.assertTrue(self.regularuser.has_perm('listings.change_gatheringcenter', center))
