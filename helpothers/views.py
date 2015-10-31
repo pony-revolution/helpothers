@@ -4,6 +4,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
+from guardian.shortcuts import assign_perm
+
 from listings.models import GatheringCenter, Resource
 
 
@@ -45,8 +47,16 @@ class ResourceCreateView(CreateView):
     template_name = 'listings/resources/create.html'
     fields = ['name', 'description', 'url']
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        response = super(ResourceCreateView, self).form_valid(form)
+        assign_perm('listings.change_resource', self.object.author, self.object)
+        assign_perm('listings.delete_resource', self.object.author, self.object)
+        return response
+
     def get_success_url(self):
         return reverse('resource-review')
+
 
 class ReviewView(TemplateView):
     """
