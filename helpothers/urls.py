@@ -5,14 +5,15 @@ from django.contrib import admin
 
 from helpothers.views import (HomeView, ProfileView, GatheringCenterView,
                               ResourceCreateView, ResourceDetailView, ReviewView,
-                              LoginView,)
+                              LoginView, GatheringCenterCreateView)
 
 
 urlpatterns = i18n_patterns(
     url(r'^$', HomeView.as_view(), name='home'),
 
     # Centers
-    url(r'^center/(?P<pk>\d+)$', GatheringCenterView.as_view(), name='gathering_center'),
+    url(r'^center/(?P<pk>\d+)$', GatheringCenterView.as_view(), name='gathering-center'),
+    url(r'^center/add$', GatheringCenterCreateView.as_view(), name='gathering-center-add'),
 
     # Resources
     url(r'^resource/(?P<pk>\d+)$', ResourceDetailView.as_view(), name='resource'),

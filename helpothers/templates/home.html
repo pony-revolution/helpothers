@@ -22,7 +22,7 @@
 
 {% block content %}
 
-    <section class="bg-primary" id="centers">
+    <section id="centers">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -32,12 +32,17 @@
                     <ul>
                         {% for center in gathering_centers %}
                             <li>
-                                <a href="{% url 'gathering_center' center.pk %}">
+                                <a href="{% url 'gathering-center' center.pk %}">
                                     <h2>{{ center.city }}</h2> -
                                     {% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}
                                 </a>
                             </li>
                         {% endfor %}
+                        <li class="new">
+                            <a href="{% url 'gathering-center-add' %}" class="btn btn-primary btn-xl page-scroll">
+                                {% trans 'Add a gathering center' %}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -45,7 +50,7 @@
     </section>
 
 
-    <section class="bg-primary" id="resources">
+    <section class="bg-light" id="resources">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -62,7 +67,7 @@
                             </li>
                         {% endfor %}
                         <li class="new">
-                            <a href="{% url 'resource-add' %}">
+                            <a href="{% url 'resource-add' %}" class="btn btn-primary btn-xl page-scroll">
                                 {% trans 'Suggest a resource or link' %}
                             </a>
                         </li>
@@ -71,4 +76,21 @@
             </div>
         </div>
     </section>
+
+
+    <section class="bg-dark" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans 'About Help Others' %}
+                    </h2>
+                    <p>
+                        {% blocktrans %}So you want to help? That's how you found this site, right? ...{% endblocktrans %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

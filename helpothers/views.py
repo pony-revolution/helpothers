@@ -32,8 +32,16 @@ class ProfileView(DetailView):
 
 class GatheringCenterView(DetailView):
     model = GatheringCenter
-    template_name = 'listings/gathering_center.html'
+    template_name = 'listings/gathering_centers/detail.html'
 
+
+class GatheringCenterCreateView(CreateView):
+    model = GatheringCenter
+    template_name = 'listings/gathering_centers/create.html'
+    fields = ['location_name', 'address', 'city', 'description', 'geoposition']
+
+    def get_success_url(self):
+        return reverse('resource-review')
 
 class ResourceDetailView(DetailView):
     model = Resource
