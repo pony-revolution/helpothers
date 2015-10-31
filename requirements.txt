@@ -1,4 +1,5 @@
 Django==1.8.5
+django-bootstrap-form==3.2
 django-countries==3.4.1
 django-fakery==1.1.1
 django-leaflet==0.16.0
