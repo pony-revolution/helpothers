@@ -40,10 +40,14 @@ class GatheringCenterView(DetailView):
 class GatheringCenterCreateView(CreateView):
     model = GatheringCenter
     template_name = 'listings/gathering_centers/create.html'
-    fields = ['location_name', 'address', 'city', 'description', 'geoposition']
+    fields = (
+        'location_name', 'address', 'city', 'description', 'geoposition',
+        'most_needed', 'hours', 'contact',
+    )
 
     def get_success_url(self):
         return reverse('resource-review')
+
 
 class ResourceDetailView(DetailView):
     model = Resource
