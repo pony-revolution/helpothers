@@ -140,6 +140,7 @@ INSTALLED_APPS = (
 
     'leaflet',
     'geoposition',
+    'guardian',
     'social.apps.django_app.default',
     'bootstrapform',
 
@@ -164,8 +165,10 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
 )
 
+ANONYMOUS_USER_ID = -1
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 

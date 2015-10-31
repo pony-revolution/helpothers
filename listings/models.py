@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -51,6 +52,7 @@ class GatheringCenter(TimeStampedModel):
         default='',
         default_markup_type='markdown',
     )
+    author = models.ForeignKey(User, null=True)
     # TODO add infomartion about what is needed the most
 
     def __unicode__(self):
@@ -67,6 +69,7 @@ class Resource(TimeStampedModel):
     sticky = models.BooleanField(blank=True, default=False)
     published = models.BooleanField(blank=True, default=False)
     country = CountryField(null=True)
+    author = models.ForeignKey(User, null=True)
 
     def __unicode__(self):
         return self.name
