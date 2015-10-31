@@ -16,7 +16,7 @@ def render(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('listings', '0004_auto_20151030_2003'),
+        ('listings', '0005_auto_20151030_2003'),
     ]
 
     operations = [
