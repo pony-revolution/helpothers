@@ -136,10 +136,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'gunicorn',
+
     'leaflet',
     'geoposition',
     'social.apps.django_app.default',
-    'gunicorn',
+    'bootstrapform',
 
     'helpothers',
     'listings',
