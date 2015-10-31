@@ -53,7 +53,7 @@ class GatheringCenter(TimeStampedModel):
         default_markup_type='markdown',
     )
     author = models.ForeignKey(User, null=True)
-    # TODO add infomartion about what is needed the most
+    contact = models.CharField(max_length=255, null=True, blank=True)
 
     def __unicode__(self):
         return '%s - %s' % (self.city, self.location_name or self.address)
