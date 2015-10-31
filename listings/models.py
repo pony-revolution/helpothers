@@ -3,6 +3,7 @@ from django.utils.translation import ugettext as _
 
 from django_countries.fields import CountryField
 from geoposition.fields import GeopositionField
+from markupfield.fields import MarkupField
 from model_utils.models import TimeStampedModel
 
 
@@ -37,9 +38,10 @@ class GatheringCenter(TimeStampedModel):
     address = models.CharField(max_length=255)
     city = models.ForeignKey(City)
     geoposition = GeopositionField(blank=True, null=True)
-    description = models.TextField(
+    description = MarkupField(
         blank=True,
         default='',
+        default_markup_type='markdown',
         help_text=_('Any additional information about this specific gathering center')
         )
     published = models.BooleanField(blank=True, default=False)
