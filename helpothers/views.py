@@ -18,6 +18,12 @@ class HomeView(TemplateView):
 class LoginView(TemplateView):
     template_name = 'login.html'
 
+    def get_context_data(self, **kwargs):
+        ctx = super(LoginView, self).get_context_data(**kwargs)
+        ctx['request'] = self.request
+        ctx['next'] = self.request.GET.get('next')
+        return ctx
+
 
 class ProfileView(DetailView):
     model = get_user_model()

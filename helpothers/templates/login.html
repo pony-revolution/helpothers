@@ -3,12 +3,12 @@
 {% block content %}
     <ul>
         <li>
-            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+            <a href="{% url 'social:begin' 'facebook' %}?next={{ next|default:'/' }}">
                 Login with Facebook
             </a>
         </li>
         <li>
-            <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+            <a href="{% url 'social:begin' 'twitter' %}?next={{ next|default:'/' }}">
                 Login with Twitter
             </a>
         </li>
