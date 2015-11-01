@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -60,6 +61,9 @@ class GatheringCenter(TimeStampedModel):
     def __unicode__(self):
         return '%s - %s' % (self.city, self.location_name or self.address)
 
+    def get_absolute_url(self):
+        return reverse('gathering-center', args=(self.pk,))
+
 
 class Resource(TimeStampedModel):
     """
@@ -75,3 +79,6 @@ class Resource(TimeStampedModel):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('resource', args=(self.pk,))

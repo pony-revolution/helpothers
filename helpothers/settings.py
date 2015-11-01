@@ -1,5 +1,6 @@
 # Django settings for helpothers project.
 import os
+from django.core.urlresolvers import reverse_lazy
 from secrets import *
 
 ALLOWED_HOSTS = ['127.0.0.1', 'helpothers.eu']
@@ -155,6 +156,7 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',
 )
 
+LOGIN_URL = reverse_lazy('login')
 ANONYMOUS_USER_ID = -1
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
