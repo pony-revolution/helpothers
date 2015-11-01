@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 
 from listings.models import GatheringCenter, Resource
 
@@ -18,11 +19,16 @@ class HomeView(TemplateView):
 class LoginView(TemplateView):
     template_name = 'login.html'
 
+    def get_context_data(self, **kwargs):
+        ctx = super(LoginView, self).get_context_data(**kwargs)
+        ctx['next'] = self.request.GET.get('next')
+        return ctx
 
-class ProfileView(DetailView):
-    model = get_user_model()
+
+class ProfileView(UpdateView):
     context_object_name = 'profile'
     template_name = 'accounts/profile.html'
+    fields = ('user__first_name', 'user__last_name', 'user__email')
 
     def get_object(self, queryset=None):
-        return self.request.user
+        return self.request.user.profile
