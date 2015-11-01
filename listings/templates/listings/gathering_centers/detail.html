@@ -13,8 +13,25 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
 
                     <h1>{{ object.city }} - {% if object.location_name %}{{ object.location_name }}{% else %}{{ object.address }}{% endif %}</h1>
+                    {% if object.hours %}
+                    <p>{{ object.hours }}</p>
+                    {% endif %}
                     {% if object.geoposition %}
                         {% leaflet_map "main" callback="main_map_init" %}
+                    {% endif %}
+                </div>
+                <div class="col-lg-8 col-lg-offset-2">
+                    {% if object.most_needed %}
+                    <h2>Most Needed</h2>
+                    {{ object.most_needed }}
+                    {% endif %}
+                    {% if object.contact %}
+                    <h2>Contact</h2>
+                    {{ object.contact }}
+                    {% endif %}
+                    {% if object.description %}
+                    <h2>About</h2>
+                    {{ object.description }}
                     {% endif %}
                 </div>
             </div>

@@ -40,7 +40,10 @@ class GatheringCenterView(DetailView):
 class GatheringCenterCreateView(CreateView):
     model = GatheringCenter
     template_name = 'listings/gathering_centers/create.html'
-    fields = ['location_name', 'address', 'city', 'description', 'geoposition']
+    fields = (
+        'location_name', 'address', 'city', 'description', 'geoposition',
+        'most_needed', 'hours', 'contact',
+    )
 
     def form_valid(self, form):
         form.instance.author = self.request.user
