@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from helpothers.views import (
     HomeView, ProfileView, GatheringCenterView, GatheringCenterUpdateView,
-    ResourceCreateView, ResourceDetailView, ReviewView,
+    ResourceCreateView, ResourceDetailView, ResourceUpdateView, ReviewView,
     LoginView, GatheringCenterCreateView
 )
 
@@ -19,6 +19,7 @@ urlpatterns = i18n_patterns(
     url(r'^center/add$', GatheringCenterCreateView.as_view(), name='gathering-center-add'),
 
     # Resources
+    url(r'^resource/(?P<pk>\d+)/update$', ResourceUpdateView.as_view(), name='resource-update'),
     url(r'^resource/(?P<pk>\d+)$', ResourceDetailView.as_view(), name='resource'),
     url(r'^resource/add$', ResourceCreateView.as_view(), name='resource-add'),
     url(r'^resource/review$', ReviewView.as_view(), name='resource-review'),

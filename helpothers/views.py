@@ -70,11 +70,13 @@ class ResourceDetailView(DetailView):
     template_name = 'listings/resources/detail.html'
 
 
-class ResourceCreateView(CreateView):
+class ResourceFormMixin(object):
     model = Resource
-    template_name = 'listings/resources/create.html'
+    template_name = 'listings/resources/form.html'
     fields = ['name', 'description', 'url']
 
+
+class ResourceCreateView(ResourceFormMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         response = super(ResourceCreateView, self).form_valid(form)
@@ -84,6 +86,13 @@ class ResourceCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('resource-review')
+
+
+class ResourceUpdateView(PermissionRequiredMixin, ResourceFormMixin, UpdateView):
+    permission_required = 'listings.change_resource'
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 
 class ReviewView(TemplateView):

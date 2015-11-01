@@ -77,3 +77,6 @@ class Resource(TimeStampedModel):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('resource', args=(self.pk,))

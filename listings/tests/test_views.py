@@ -43,6 +43,30 @@ class ListingViewsTestCase(TestCase):
         self.assertEqual(resource.author, self.regularuser)
         self.assertTrue(self.regularuser.has_perm('listings.change_resource', resource))
 
+    def test_resource_update(self):
+        self.test_resource_add()
+        resource = models.Resource.objects.get(name='resource name')
+
+        self.client.logout()
+        url = reverse('resource-update', args=(resource.pk,))
+        response = self.client.get(url)
+        self.assertNotEqual(response.status_code, 200)
+
+        self.client.login(username='regularuser', password='regularuser')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        payload = {
+            'name': 'resource name',
+            'description': 'lorem ipsum',
+            'url': 'http://example.com'
+        }
+
+        response = self.client.post(url, payload)
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(response['Location'].endswith(resource.get_absolute_url()))
+
     def test_gathering_center_add(self):
         url = reverse('gathering-center-add')
         response = self.client.get(url)
