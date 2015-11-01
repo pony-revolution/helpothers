@@ -22,15 +22,15 @@
                 </div>
                 <div class="col-lg-8 col-lg-offset-2">
                     {% if object.most_needed %}
-                    <h2>Most Needed</h2>
+                    <h2>{% trans "Most Needed" %}</h2>
                     {{ object.most_needed }}
                     {% endif %}
                     {% if object.contact %}
-                    <h2>Contact</h2>
+                    <h2>{% trans "Contact" %}</h2>
                     {{ object.contact }}
                     {% endif %}
                     {% if object.description %}
-                    <h2>About</h2>
+                    <h2>{% trans "About" %}</h2>
                     {{ object.description }}
                     {% endif %}
                 </div>
