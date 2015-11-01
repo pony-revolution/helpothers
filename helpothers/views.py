@@ -3,10 +3,11 @@ from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
 
+from .views_mixins import HelpOthersMetaDataMixin
 from listings.models import GatheringCenter, Resource
 
 
-class HomeView(TemplateView):
+class HomeView(HelpOthersMetaDataMixin, TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
@@ -16,7 +17,7 @@ class HomeView(TemplateView):
         return context
 
 
-class LoginView(TemplateView):
+class LoginView(HelpOthersMetaDataMixin, TemplateView):
     template_name = 'login.html'
 
     def get_context_data(self, **kwargs):
@@ -25,7 +26,7 @@ class LoginView(TemplateView):
         return ctx
 
 
-class ProfileView(UpdateView):
+class ProfileView(HelpOthersMetaDataMixin, UpdateView):
     context_object_name = 'profile'
     template_name = 'accounts/profile.html'
     fields = ('user__first_name', 'user__last_name', 'user__email')
