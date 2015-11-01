@@ -134,6 +134,7 @@ INSTALLED_APPS = (
 
     'helpothers',
     'listings',
+    'profiles',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
