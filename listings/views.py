@@ -4,7 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
 from guardian.shortcuts import assign_perm
-from guardian.mixins import PermissionRequiredMixin
+from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from listings.models import GatheringCenter, Resource
 
@@ -23,7 +23,7 @@ class GatheringCenterFormMixin(object):
     )
 
 
-class GatheringCenterCreateView(GatheringCenterFormMixin, CreateView):
+class GatheringCenterCreateView(LoginRequiredMixin, GatheringCenterFormMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         response = super(GatheringCenterCreateView, self).form_valid(form)
@@ -53,7 +53,7 @@ class ResourceFormMixin(object):
     fields = ['name', 'description', 'url']
 
 
-class ResourceCreateView(ResourceFormMixin, CreateView):
+class ResourceCreateView(LoginRequiredMixin, ResourceFormMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         response = super(ResourceCreateView, self).form_valid(form)

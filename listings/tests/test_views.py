@@ -26,9 +26,11 @@ class ListingViewsTestCase(TestCase):
     def test_resource_add(self):
         url = reverse('resource-add')
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         self.client.login(username='regularuser', password='regularuser')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
 
         payload = {
             'name': 'resource name',
@@ -70,9 +72,11 @@ class ListingViewsTestCase(TestCase):
     def test_gathering_center_add(self):
         url = reverse('gathering-center-add')
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         self.client.login(username='regularuser', password='regularuser')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
 
         payload = {
             'location_name': 'Center name',
