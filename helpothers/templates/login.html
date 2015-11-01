@@ -1,16 +1,24 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-    <ul>
-        <li>
-            <a href="{% url 'social:begin' 'facebook' %}?next={{ next|default:'/' }}">
-                Login with Facebook
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'social:begin' 'twitter' %}?next={{ next|default:'/' }}">
-                Login with Twitter
-            </a>
-        </li>
-    </ul>
+    <section class="bg-dark" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans "Log in" %}
+                    </h2>
+                    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"
+                       class="btn btn-primary btn-xl page-scroll">
+                        Login with Facebook
+                    </a>
+                    <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"
+                       class="btn btn-primary btn-xl page-scroll">
+                        Login with Twitter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
