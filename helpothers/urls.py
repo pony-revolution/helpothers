@@ -3,15 +3,18 @@ from django.conf.urls import include, url, patterns
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
-from helpothers.views import (HomeView, ProfileView, GatheringCenterView,
-                              ResourceCreateView, ResourceDetailView, ReviewView,
-                              LoginView, GatheringCenterCreateView)
+from helpothers.views import (
+    HomeView, ProfileView, GatheringCenterView, GatheringCenterUpdateView,
+    ResourceCreateView, ResourceDetailView, ReviewView,
+    LoginView, GatheringCenterCreateView
+)
 
 
 urlpatterns = i18n_patterns(
     url(r'^$', HomeView.as_view(), name='home'),
 
     # Centers
+    url(r'^center/(?P<pk>\d+)/update$', GatheringCenterUpdateView.as_view(), name='gathering-center-update'),
     url(r'^center/(?P<pk>\d+)$', GatheringCenterView.as_view(), name='gathering-center'),
     url(r'^center/add$', GatheringCenterCreateView.as_view(), name='gathering-center-add'),
 

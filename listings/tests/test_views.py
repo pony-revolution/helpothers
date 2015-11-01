@@ -64,3 +64,29 @@ class ListingViewsTestCase(TestCase):
         center = models.GatheringCenter.objects.get(location_name='Center name')
         self.assertEqual(center.author, self.regularuser)
         self.assertTrue(self.regularuser.has_perm('listings.change_gatheringcenter', center))
+
+    def test_gathering_center_edit(self):
+        self.test_gathering_center_add()
+        center = models.GatheringCenter.objects.get(location_name='Center name')
+
+        self.client.logout()
+        url = reverse('gathering-center-update', args=(center.pk,))
+        response = self.client.get(url)
+        self.assertNotEqual(response.status_code, 200)
+
+        self.client.login(username='regularuser', password='regularuser')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        payload = {
+            'location_name': 'Center name',
+            'description': 'lorem ipsum',
+            'address': 'Pony Rd',
+            'city': self.city.id
+
+        }
+
+        response = self.client.post(url, payload)
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(response['Location'].endswith(center.get_absolute_url()))
