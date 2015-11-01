@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'guardian',
     'social.apps.django_app.default',
     'bootstrapform',
+    'meta',
 
     'helpothers',
     'listings',
@@ -194,3 +195,14 @@ LOGGING = {
 LEAFLET_CONFIG = {
     'DEFAULT_ZOOM': 16,
 }
+
+# django-meta settings
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = 'helpothers.eu'
+META_SITE_TYPE = 'article'
+META_SITE_NAME = 'Help Others'
+META_INCLUDE_KEYWORDS = ['charity', 'refugees']
+META_DEFAULT_KEYWORDS = META_INCLUDE_KEYWORDS  # So that the keywords are included every time
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_TITLE_TAG = True
