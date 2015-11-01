@@ -43,6 +43,7 @@ class GatheringCenter(TimeStampedModel):
         blank=True,
         default='',
         default_markup_type='markdown',
+        escape_html=True,
         help_text=_('Any additional information about this specific gathering center')
         )
     published = models.BooleanField(blank=True, default=False)
@@ -50,6 +51,7 @@ class GatheringCenter(TimeStampedModel):
     most_needed = MarkupField(
         blank=True,
         default='',
+        escape_html=True,
         default_markup_type='markdown',
     )
     author = models.ForeignKey(User, null=True)
