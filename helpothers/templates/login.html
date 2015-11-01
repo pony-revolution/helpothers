@@ -9,11 +9,11 @@
                     <h2 class="section-heading">
                         {% trans "Log in" %}
                     </h2>
-                    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"
+                    <a href="{% url 'social:begin' 'facebook' %}?next={{ {{ next|default:'/' }} }}"
                        class="btn btn-primary btn-xl page-scroll">
                         Login with Facebook
                     </a>
-                    <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"
+                    <a href="{% url 'social:begin' 'twitter' %}?next={{ {{ next|default:'/' }} }}"
                        class="btn btn-primary btn-xl page-scroll">
                         Login with Twitter
                     </a>
