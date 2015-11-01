@@ -6,10 +6,11 @@ from django.views.generic.edit import CreateView, UpdateView
 from guardian.shortcuts import assign_perm
 from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
+from helpothers.views_mixins import HelpOthersMetaDataMixin
 from listings.models import GatheringCenter, Resource
 
 
-class GatheringCenterView(DetailView):
+class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
     template_name = 'listings/gathering_centers/detail.html'
 
@@ -23,7 +24,7 @@ class GatheringCenterFormMixin(object):
     )
 
 
-class GatheringCenterCreateView(LoginRequiredMixin, GatheringCenterFormMixin, CreateView):
+class GatheringCenterCreateView(HelpOthersMetaDataMixin, LoginRequiredMixin, GatheringCenterFormMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         response = super(GatheringCenterCreateView, self).form_valid(form)
@@ -35,14 +36,14 @@ class GatheringCenterCreateView(LoginRequiredMixin, GatheringCenterFormMixin, Cr
         return reverse('resource-review')
 
 
-class GatheringCenterUpdateView(PermissionRequiredMixin, GatheringCenterFormMixin, UpdateView):
+class GatheringCenterUpdateView(HelpOthersMetaDataMixin, PermissionRequiredMixin, GatheringCenterFormMixin, UpdateView):
     permission_required = 'listings.change_gatheringcenter'
 
     def get_success_url(self):
         return self.object.get_absolute_url()
 
 
-class ResourceDetailView(DetailView):
+class ResourceDetailView(HelpOthersMetaDataMixin, DetailView):
     model = Resource
     template_name = 'listings/resources/detail.html'
 
@@ -53,7 +54,7 @@ class ResourceFormMixin(object):
     fields = ['name', 'description', 'url']
 
 
-class ResourceCreateView(LoginRequiredMixin, ResourceFormMixin, CreateView):
+class ResourceCreateView(HelpOthersMetaDataMixin, LoginRequiredMixin, ResourceFormMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         response = super(ResourceCreateView, self).form_valid(form)
@@ -65,14 +66,14 @@ class ResourceCreateView(LoginRequiredMixin, ResourceFormMixin, CreateView):
         return reverse('resource-review')
 
 
-class ResourceUpdateView(PermissionRequiredMixin, ResourceFormMixin, UpdateView):
+class ResourceUpdateView(HelpOthersMetaDataMixin, PermissionRequiredMixin, ResourceFormMixin, UpdateView):
     permission_required = 'listings.change_resource'
 
     def get_success_url(self):
         return self.object.get_absolute_url()
 
 
-class ReviewView(TemplateView):
+class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     """
     Page to notify the user that the resource will be reviewed.
     """

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% block title %}{% trans 'Resource added' %} | {{ block.super }}{% endblock %}
+
+
 {% block content %}
 
     <section class="bg-primary" id="centers">
