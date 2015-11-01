@@ -4,9 +4,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
 from helpothers.views import (
-    HomeView, ProfileView, GatheringCenterView, GatheringCenterUpdateView,
+    HomeView, LoginView, ProfileView
+)
+
+from listings.views import (
+    GatheringCenterView, GatheringCenterCreateView, GatheringCenterUpdateView,
     ResourceCreateView, ResourceDetailView, ResourceUpdateView, ReviewView,
-    LoginView, GatheringCenterCreateView
 )
 
 
