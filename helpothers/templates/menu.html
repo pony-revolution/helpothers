@@ -56,12 +56,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-                                    Login with Facebook
+                                    {% trans 'Log in with Facebook' %}
                                 </a>
                             </li>
                             <li>
                                 <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
-                                    Login with Twitter
+                                    {% trans 'Log in with Twitter' %}
                                 </a>
                             </li>
                         </ul>
