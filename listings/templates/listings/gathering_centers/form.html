@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 {% load bootstrap %}
 
 {% block title %}{% trans 'Add new Gathering Center' %} | {{ block.super }}{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/form.css" %}" />
+{% endblock %}
 
 {% block content %}
 
@@ -15,9 +19,7 @@
                     </h2>
                     <form method="post">
                         {% csrf_token %}
-                        <table>
-                            {{ form|bootstrap }}
-                        </table>
+                        {{ form|bootstrap }}
                         <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add' %}" />
                     </form>
                 </div>
@@ -26,3 +28,7 @@
     </section>
 
 {%  endblock %}
+
+{% block extrabody %}
+    {{ form.media }}
+{% endblock extrabody %}
