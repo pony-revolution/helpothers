@@ -15,9 +15,7 @@ ADMINS = (
 )
 
 LANGUAGES = (
-  ('de', ('Deutsch')),
   ('en', ('English')),
-  ('nl', ('Nederlands')),
   ('sl', ('Slovenscina')),
 )
 
