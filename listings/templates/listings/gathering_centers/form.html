@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 {% load bootstrap %}
 
 {% block title %}{% trans 'Add new Gathering Center' %} | {{ block.super }}{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/form.css" %}" />
+{% endblock %}
 
 {% block content %}
 
