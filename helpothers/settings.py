@@ -15,10 +15,8 @@ ADMINS = (
 )
 
 LANGUAGES = (
-  ('de', ('Deutsch')),
   ('en', ('English')),
-  ('nl', ('Nederlands')),
-  ('si', ('Slovenski')),
+  ('sl', ('Slovenscina')),
 )
 
 
@@ -39,7 +37,7 @@ TIME_ZONE = 'Europe/Ljubljana'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'sl_SI'
+LANGUAGE_CODE = 'sl'
 
 SITE_ID = 1
 
@@ -144,6 +142,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
+    'django.template.context_processors.request',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'social.apps.django_app.context_processors.backends',

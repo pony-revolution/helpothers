@@ -13,7 +13,12 @@ from listings.views import (
 )
 
 
-urlpatterns = i18n_patterns(
+urlpatterns = [
+    # i18n
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+]
+
+urlpatterns += i18n_patterns(
     url(r'^$', HomeView.as_view(), name='home'),
 
     # Centers

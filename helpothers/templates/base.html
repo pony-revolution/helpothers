@@ -70,6 +70,17 @@
     <!-- Custom Theme JavaScript -->
     <script src="{% static "js/creative.js" %}"></script>
 
+    <script type="text/javascript">
+        $(function() {
+            $('#languages li a').click(function(e) {
+                e.preventDefault();
+                var language = $(e.target).data('lang');
+                var form = $('#languages form');
+                $('select[name=language]', form).val(language);
+                form.submit();
+            });
+        });
+    </script>
 </body>
 
 
