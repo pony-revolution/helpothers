@@ -11,11 +11,11 @@
                     </h2>
                     <a href="{% url 'social:begin' 'facebook' %}?next={{ next|default:'/' }}"
                        class="btn btn-primary btn-xl page-scroll">
-                        Login with Facebook
+                        {% trans 'Log in with Facebook' %}
                     </a>
                     <a href="{% url 'social:begin' 'twitter' %}?next={{ next|default:'/' }}"
                        class="btn btn-primary btn-xl page-scroll">
-                        Login with Twitter
+                        {% trans 'Log in with Twitter' %}
                     </a>
                 </div>
             </div>
