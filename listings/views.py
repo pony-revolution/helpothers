@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
+from geoposition import Geoposition
 from guardian.shortcuts import assign_perm
 from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
@@ -25,6 +27,10 @@ class GatheringCenterFormMixin(object):
 
 
 class GatheringCenterCreateView(HelpOthersMetaDataMixin, LoginRequiredMixin, GatheringCenterFormMixin, CreateView):
+    initial = {
+        'geoposition': Geoposition(*settings.DEFAULT_MAP_CENTER)
+    }
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         response = super(GatheringCenterCreateView, self).form_valid(form)

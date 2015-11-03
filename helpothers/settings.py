@@ -195,6 +195,12 @@ LEAFLET_CONFIG = {
     'DEFAULT_ZOOM': 16,
 }
 
+GEOPOSITION_MAP_OPTIONS = {
+    'zoom': 8,
+}
+
+DEFAULT_MAP_CENTER = (46.1436869, 13.8649654)
+
 # django-meta settings
 META_SITE_PROTOCOL = 'http'
 META_SITE_DOMAIN = 'helpothers.eu'
