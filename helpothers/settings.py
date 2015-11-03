@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Django settings for helpothers project.
 import os
 from django.core.urlresolvers import reverse_lazy
@@ -16,7 +17,7 @@ ADMINS = (
 
 LANGUAGES = (
   ('en', ('English')),
-  ('sl', ('Slovenscina')),
+  ('sl', ('Slovenščina')),
 )
 
 

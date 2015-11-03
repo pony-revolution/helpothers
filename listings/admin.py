@@ -7,4 +7,3 @@ admin.site.register(Region)
 admin.site.register(City)
 admin.site.register(GatheringCenter)
 admin.site.register(Resource)
-

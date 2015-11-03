@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-01 00:25+0100\n"
+"POT-Creation-Date: 2015-11-03 23:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,111 +17,159 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: helpothers/templates/accounts/profile.html:10
+#: helpothers/templates/menu.html:42
+msgid "My profile"
+msgstr ""
+
+#: helpothers/templates/base.html:14 helpothers/templates/menu.html:15
+msgid "Help Others"
+msgstr ""
+
 #: helpothers/templates/home.html:9
 msgid "Welcome to Help Others!"
 msgstr ""
 
 #: helpothers/templates/home.html:13
-msgid ""
-"\n"
-"                    This is the place to find how and where you can help the "
-"refugees...\n"
-"                    "
+msgid "This is the place to find how and where you can help the refugees..."
 msgstr ""
 
-#: helpothers/templates/home.html:30 helpothers/templates/menu.html:28
+#: helpothers/templates/home.html:28 helpothers/templates/menu.html:28
 msgid "Gathering centers"
 msgstr ""
 
-#: helpothers/templates/home.html:43
+#: helpothers/templates/home.html:41
 msgid "Add a gathering center"
 msgstr ""
 
-#: helpothers/templates/home.html:58 helpothers/templates/menu.html:23
+#: helpothers/templates/home.html:56 helpothers/templates/menu.html:23
 msgid "Resources"
 msgstr ""
 
-#: helpothers/templates/home.html:71
+#: helpothers/templates/home.html:69
 msgid "Suggest a resource"
 msgstr ""
 
-#: helpothers/templates/home.html:86
+#: helpothers/templates/home.html:84
 msgid "About Help Others"
 msgstr ""
 
-#: helpothers/templates/home.html:89
+#: helpothers/templates/home.html:87
 msgid "So you want to help? That's how you found this site, right? ..."
+msgstr ""
+
+#: helpothers/templates/login.html:10 helpothers/templates/menu.html:54
+msgid "Log in"
+msgstr ""
+
+#: helpothers/templates/login.html:14 helpothers/templates/menu.html:59
+msgid "Log in with Facebook"
+msgstr ""
+
+#: helpothers/templates/login.html:18 helpothers/templates/menu.html:64
+msgid "Log in with Twitter"
 msgstr ""
 
 #: helpothers/templates/menu.html:8
 msgid "Toggle navigation"
 msgstr ""
 
-#: helpothers/templates/menu.html:15
-msgid "Help Others"
-msgstr ""
-
 #: helpothers/templates/menu.html:33
+#: listings/templates/listings/gathering_centers/detail.html:47
 msgid "About"
-msgstr ""
-
-#: helpothers/templates/menu.html:42
-msgid "My profile"
 msgstr ""
 
 #: helpothers/templates/menu.html:47
 msgid "Log out"
 msgstr ""
 
-#: helpothers/templates/menu.html:54
-msgid "Log in"
+#: helpothers/templates/menu.html:71
+msgid "Language"
 msgstr ""
 
-#: listings/models.py:25
-msgid "City"
+#: helpothers/views_mixins.py:9
+msgid ""
+"A collection of up to date and relevant resources on how to help the refugees"
 msgstr ""
 
 #: listings/models.py:26
+msgid "City"
+msgstr ""
+
+#: listings/models.py:27
 msgid "Cities"
 msgstr ""
 
-#: listings/models.py:37
+#: listings/models.py:38
 msgid "If this center has any special name"
 msgstr ""
 
-#: listings/models.py:46
+#: listings/models.py:48
 msgid "Any additional information about this specific gathering center"
 msgstr ""
 
-#: listings/models.py:66
+#: listings/models.py:72
 msgid "Name"
 msgstr ""
 
-#: listings/models.py:67
+#: listings/models.py:73
 msgid "Description"
 msgstr ""
 
-#: listings/models.py:68
+#: listings/models.py:74
 msgid "URL"
 msgstr ""
 
-#: listings/templates/listings/gathering_centers/create.html:12
+#: listings/templates/listings/gathering_centers/detail.html:4
+msgid "Gathering Center"
+msgstr ""
+
+#: listings/templates/listings/gathering_centers/detail.html:19
+msgid "Edit this Gathering Center"
+msgstr ""
+
+#: listings/templates/listings/gathering_centers/detail.html:39
+msgid "Most Needed"
+msgstr ""
+
+#: listings/templates/listings/gathering_centers/detail.html:43
+msgid "Contact"
+msgstr ""
+
+#: listings/templates/listings/gathering_centers/form.html:5
+msgid "Add new Gathering Center"
+msgstr ""
+
+#: listings/templates/listings/gathering_centers/form.html:18
 msgid "Add new gathering center"
 msgstr ""
 
-#: listings/templates/listings/gathering_centers/create.html:19
-#: listings/templates/listings/resources/create.html:19
+#: listings/templates/listings/gathering_centers/form.html:23
+#: listings/templates/listings/resources/form.html:21
 msgid "Add"
 msgstr ""
 
-#: listings/templates/listings/resources/create.html:12
+#: listings/templates/listings/resources/detail.html:4
+msgid "Resource"
+msgstr ""
+
+#: listings/templates/listings/resources/detail.html:15
+msgid "Edit this Resource"
+msgstr ""
+
+#: listings/templates/listings/resources/form.html:5
+#: listings/templates/listings/resources/form.html:14
 msgid "Add new resource or link"
 msgstr ""
 
-#: listings/templates/listings/resources/review.html:11
-msgid "Thanks!"
+#: listings/templates/listings/resources/review.html:4
+msgid "Resource added"
 msgstr ""
 
 #: listings/templates/listings/resources/review.html:14
+msgid "Thanks!"
+msgstr ""
+
+#: listings/templates/listings/resources/review.html:17
 msgid "Thank you for your submission. We'll review it as soon as possible."
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Help Others\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-01 09:03+0100\n"
+"POT-Creation-Date: 2015-11-03 23:00+0100\n"
 "PO-Revision-Date: 2015-10-24 18:31+0000\n"
 "Last-Translator: Loek van Gent <loek@1procentclub.nl>\n"
 "Language-Team: Slovenian (http://www.transifex.com/pony-revolution/help-"
@@ -19,111 +19,168 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
+#: helpothers/templates/accounts/profile.html:10
+#: helpothers/templates/menu.html:42
+msgid "My profile"
+msgstr "Moj profil"
+
+#: helpothers/templates/base.html:14 helpothers/templates/menu.html:15
+msgid "Help Others"
+msgstr ""
+
 #: helpothers/templates/home.html:9
 msgid "Welcome to Help Others!"
 msgstr "Dobrodošli v Help Others"
 
 #: helpothers/templates/home.html:13
-msgid ""
-"\n"
-"                    This is the place to find how and where you can help the "
-"refugees...\n"
-"                    "
+msgid "This is the place to find how and where you can help the refugees..."
 msgstr ""
 
-#: helpothers/templates/home.html:30 helpothers/templates/menu.html:28
+#: helpothers/templates/home.html:28 helpothers/templates/menu.html:28
 msgid "Gathering centers"
-msgstr "Zbiranje centri"
+msgstr "Zbirni centri"
 
-#: helpothers/templates/home.html:43
+#: helpothers/templates/home.html:41
 msgid "Add a gathering center"
-msgstr ""
+msgstr "Dodaj zbirni center"
 
-#: helpothers/templates/home.html:58 helpothers/templates/menu.html:23
+#: helpothers/templates/home.html:56 helpothers/templates/menu.html:23
 msgid "Resources"
 msgstr "Viri"
 
-#: helpothers/templates/home.html:71
+#: helpothers/templates/home.html:69
 msgid "Suggest a resource"
-msgstr ""
+msgstr "Predlagaj nov vir"
 
-#: helpothers/templates/home.html:86
+#: helpothers/templates/home.html:84
 msgid "About Help Others"
-msgstr ""
+msgstr "Kaj je Help Others"
 
-#: helpothers/templates/home.html:89
+#: helpothers/templates/home.html:87
 msgid "So you want to help? That's how you found this site, right? ..."
 msgstr ""
+
+#: helpothers/templates/login.html:10 helpothers/templates/menu.html:54
+msgid "Log in"
+msgstr "Vpiši se"
+
+#: helpothers/templates/login.html:14 helpothers/templates/menu.html:59
+msgid "Log in with Facebook"
+msgstr "Vpiši se s Facebook računom"
+
+#: helpothers/templates/login.html:18 helpothers/templates/menu.html:64
+msgid "Log in with Twitter"
+msgstr "Vpiši se s Twitter računom"
 
 #: helpothers/templates/menu.html:8
 msgid "Toggle navigation"
 msgstr ""
 
-#: helpothers/templates/menu.html:15
-msgid "Help Others"
-msgstr ""
-
 #: helpothers/templates/menu.html:33
+#: listings/templates/listings/gathering_centers/detail.html:47
 msgid "About"
-msgstr "Približno"
-
-#: helpothers/templates/menu.html:42
-msgid "My profile"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: helpothers/templates/menu.html:47
 msgid "Log out"
-msgstr ""
+msgstr "Odjavi se"
 
-#: helpothers/templates/menu.html:54
-msgid "Log in"
-msgstr ""
+#: helpothers/templates/menu.html:71
+msgid "Language"
+msgstr "Jezik"
 
-#: listings/models.py:25
-msgid "City"
+#: helpothers/views_mixins.py:9
+msgid ""
+"A collection of up to date and relevant resources on how to help the refugees"
 msgstr ""
+"Zbirka aktualnih in relevantnih podatkov, novic, napotkov v zvezi z begunci"
 
 #: listings/models.py:26
+msgid "City"
+msgstr "Mesto"
+
+#: listings/models.py:27
 msgid "Cities"
-msgstr ""
+msgstr "Mesta"
 
-#: listings/models.py:37
+#: listings/models.py:38
 msgid "If this center has any special name"
-msgstr ""
+msgstr "Ali ima to zbirališče kakšno posebno ime"
 
-#: listings/models.py:46
+#: listings/models.py:48
 msgid "Any additional information about this specific gathering center"
-msgstr ""
+msgstr "Dodatne informacije o tem zbirnem centru"
 
-#: listings/models.py:66
+#: listings/models.py:72
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
-#: listings/models.py:67
+#: listings/models.py:73
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
-#: listings/models.py:68
+#: listings/models.py:74
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
-#: listings/templates/listings/gathering_centers/create.html:12
+#: listings/templates/listings/gathering_centers/detail.html:4
+#, fuzzy
+#| msgid "Gathering centers"
+msgid "Gathering Center"
+msgstr "Zbirni centri"
+
+#: listings/templates/listings/gathering_centers/detail.html:19
+#, fuzzy
+#| msgid "Gathering centers"
+msgid "Edit this Gathering Center"
+msgstr "Uredi ta zbirni center"
+
+#: listings/templates/listings/gathering_centers/detail.html:39
+msgid "Most Needed"
+msgstr "Najbolj potrebno"
+
+#: listings/templates/listings/gathering_centers/detail.html:43
+msgid "Contact"
+msgstr "Kontakt"
+
+#: listings/templates/listings/gathering_centers/form.html:5
+#, fuzzy
+#| msgid "Gathering centers"
+msgid "Add new Gathering Center"
+msgstr "Dodaj nov zbirni center"
+
+#: listings/templates/listings/gathering_centers/form.html:18
 msgid "Add new gathering center"
-msgstr ""
+msgstr "Dodaj nov zbirni center"
 
-#: listings/templates/listings/gathering_centers/create.html:19
-#: listings/templates/listings/resources/create.html:19
+#: listings/templates/listings/gathering_centers/form.html:23
+#: listings/templates/listings/resources/form.html:21
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
-#: listings/templates/listings/resources/create.html:12
+#: listings/templates/listings/resources/detail.html:4
+#, fuzzy
+#| msgid "Resources"
+msgid "Resource"
+msgstr "Viri"
+
+#: listings/templates/listings/resources/detail.html:15
+msgid "Edit this Resource"
+msgstr "Uredi vir"
+
+#: listings/templates/listings/resources/form.html:5
+#: listings/templates/listings/resources/form.html:14
 msgid "Add new resource or link"
 msgstr ""
 
-#: listings/templates/listings/resources/review.html:11
-msgid "Thanks!"
-msgstr ""
+#: listings/templates/listings/resources/review.html:4
+msgid "Resource added"
+msgstr "Vir dodan"
 
 #: listings/templates/listings/resources/review.html:14
+msgid "Thanks!"
+msgstr "Hvala!"
+
+#: listings/templates/listings/resources/review.html:17
 msgid "Thank you for your submission. We'll review it as soon as possible."
-msgstr ""
+msgstr "Hvala za Vaš prispevek. Pregledali ga bomo v najkrajšem možnem času."
