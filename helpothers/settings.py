@@ -201,7 +201,7 @@ GEOPOSITION_MARKER_OPTIONS = {
     'icon': '/static/img/map-icon.png'
 }
 
-DEFAULT_MAP_CENTER = (46.1436869, 13.8649654)
+DEFAULT_MAP_CENTER = (46.1436869, 14.8649654)
 
 # django-meta settings
 META_SITE_PROTOCOL = 'http'
