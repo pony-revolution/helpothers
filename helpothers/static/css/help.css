@@ -404,3 +404,15 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #322;
 }
+.geoposition-search {
+  color: #555;
+}
+.navbar svg {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: -3px 5px;
+}
+.navbar svg g {
+  fill: #55aa33;
+}
