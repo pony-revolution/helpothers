@@ -438,6 +438,7 @@ ul.list li.item h2 {
   margin: 4px 0px;
 }
 ul.list.resources li.item {
+  padding-left: 40px;
   height: auto;
 }
 ul.list.resources li.item:hover {
