@@ -17,18 +17,18 @@ class PublishMixin(object):
 
 
 class GatheringCenterAdmin(PublishMixin, admin.ModelAdmin):
-    list_filter = ('published', 'city')
+    list_filter = ('published', 'city', 'created')
     list_editable = ('published', )
-    list_display = ('location_name', 'published', 'author', 'city')
+    list_display = ('location_name', 'created', 'published', 'author', 'city')
     raw_id_fields = ('author', )
 
 admin.site.register(GatheringCenter, GatheringCenterAdmin)
 
 
 class ResourceAdmin(PublishMixin, admin.ModelAdmin):
-    list_filter = ('published', )
+    list_filter = ('published', 'created')
     list_editable = ('published', )
-    list_display = ('name', 'published', 'author', 'url')
+    list_display = ('name', 'created', 'published', 'author', 'url', 'country')
     raw_id_fields = ('author', )
 
 admin.site.register(Resource, ResourceAdmin)
