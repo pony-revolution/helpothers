@@ -419,7 +419,10 @@ header.small .header-content {
   padding: 50px 0 20px 0 ;
 }
 section {
-  padding: 30px 0;
+  padding: 50px 0;
+}
+section.bg-light {
+  color: #322;
 }
 ul.list {
   list-style: none;
@@ -428,7 +431,7 @@ ul.list a:hover {
   text-decoration: none;
 }
 ul.list li.item {
-  margin: 10px 0px;
+  margin: 10px 0;
   height: 100px;
   border: 1px solid #55aa33;
   border-radius: 50px;
