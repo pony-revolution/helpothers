@@ -197,6 +197,9 @@ LEAFLET_CONFIG = {
 GEOPOSITION_MAP_OPTIONS = {
     'zoom': 8,
 }
+GEOPOSITION_MARKER_OPTIONS = {
+    'icon': '/static/img/map-icon.png'
+}
 
 DEFAULT_MAP_CENTER = (46.1436869, 13.8649654)
 
