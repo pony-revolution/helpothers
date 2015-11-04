@@ -39,8 +39,8 @@ class GatheringCenter(TimeStampedModel):
         )
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255, blank=True, null=True)
-    region = models.ForeignKey(Region, null=True)
-    country = CountryField(null=True)
+    region = models.ForeignKey(Region, null=True, blank=True)
+    country = CountryField()
     geoposition = GeopositionField(blank=True, null=True)
     description = MarkupField(
         blank=True,
