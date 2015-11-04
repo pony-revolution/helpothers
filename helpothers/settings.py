@@ -124,7 +124,6 @@ INSTALLED_APPS = (
 
     'gunicorn',
 
-    'leaflet',
     'geoposition',
     'guardian',
     'social.apps.django_app.default',
