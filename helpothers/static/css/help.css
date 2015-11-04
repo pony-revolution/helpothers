@@ -407,6 +407,42 @@ body {
 .geoposition-search {
   color: #555;
 }
+ul.list {
+  list-style: none;
+}
+ul.list a:hover {
+  text-decoration: none;
+}
+ul.list li.item {
+  margin: 10px 0px;
+  height: 100px;
+  border: 1px solid #55aa33;
+  border-radius: 50px;
+  overflow: hidden;
+  text-align: left;
+}
+ul.list li.item img {
+  opacity: .5;
+  float: left;
+  margin-right: 10px;
+  border-right: 1px solid #55aa33;
+}
+ul.list li.item:hover {
+  background-color: #ded;
+  transition: .5s;
+}
+ul.list li.item:hover img {
+  opacity: 1;
+}
+ul.list li.item h2 {
+  margin: 4px 0px;
+}
+ul.list.resources li.item {
+  height: auto;
+}
+ul.list.resources li.item:hover {
+  background-color: white;
+}
 .navbar svg {
   float: left;
   width: 30px;

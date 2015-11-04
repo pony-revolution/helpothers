@@ -1,6 +1,45 @@
 @import "creative.less";
 @import "form.less";
 
+ul.list {
+  list-style: none;
+  a:hover {
+    text-decoration: none;
+  }
+  li.item {
+    margin: 10px 0px;
+    height: 100px;
+    border: 1px solid @theme-primary;
+    border-radius: 50px;
+    overflow: hidden;
+    text-align: left;
+    img {
+      opacity: .5;
+      float: left;
+      margin-right: 10px;
+      border-right: 1px solid @theme-primary;
+    }
+    &:hover {
+      img {
+        opacity: 1;
+      }
+      background-color: @theme-light;
+      transition: .5s;
+    }
+    h2 {
+      margin: 4px 0px;
+    }
+  }
+}
+ul.list.resources {
+  li.item {
+    height: auto;
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
 .navbar {
   svg {
   float: left;
