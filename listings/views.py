@@ -21,14 +21,15 @@ class GatheringCenterFormMixin(object):
     model = GatheringCenter
     template_name = 'listings/gathering_centers/form.html'
     fields = (
-        'location_name', 'address', 'city', 'description', 'geoposition',
-        'most_needed', 'hours', 'contact',
+        'location_name', 'address', 'city', 'country', 'region',
+        'description', 'geoposition', 'most_needed', 'hours', 'contact',
     )
 
 
 class GatheringCenterCreateView(HelpOthersMetaDataMixin, LoginRequiredMixin, GatheringCenterFormMixin, CreateView):
     initial = {
-        'geoposition': Geoposition(*settings.DEFAULT_MAP_CENTER)
+        'geoposition': Geoposition(*settings.DEFAULT_MAP_CENTER),
+        'country': 'SI'
     }
 
     def form_valid(self, form):

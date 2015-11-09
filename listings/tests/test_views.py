@@ -16,12 +16,6 @@ class ListingViewsTestCase(TestCase):
                 'is_staff': False,
             }
         )
-        self.city = factory.make(
-            'listings.City',
-            fields={
-                'name': 'Revolution City'
-            }
-        )
 
     def test_resource_add(self):
         url = reverse('resource-add')
@@ -82,7 +76,8 @@ class ListingViewsTestCase(TestCase):
             'location_name': 'Center name',
             'description': 'lorem ipsum',
             'address': 'Pony Rd',
-            'city': self.city.id
+            'country': 'SL',
+            'city': 'Ljubljana'
 
         }
 
@@ -110,7 +105,8 @@ class ListingViewsTestCase(TestCase):
             'location_name': 'Center name',
             'description': 'lorem ipsum',
             'address': 'Pony Rd',
-            'city': self.city.id
+            'country': 'NL',
+            'city': 'Leiden'
 
         }
 
