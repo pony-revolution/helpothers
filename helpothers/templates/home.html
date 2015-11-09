@@ -27,17 +27,19 @@
                     <h2 class="section-heading">
                         {% trans 'Gathering centers' %}
                     </h2>
-                    <ul>
+                    <ul class="list gathering-centers">
                         {% for center in gathering_centers %}
-                            <li>
-                                <a href="{% url 'gathering-center' center.pk %}">
+                            <a href="{% url 'gathering-center' center.pk %}">
+                                <li class="item">
+                                    {% include 'elements/preview-map.html' with object=center %}
                                     <h2>{{ center.city }}</h2> -
                                     {% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}
-                                </a>
-                            </li>
+                                </li>
+                            </a>
                         {% endfor %}
                         <li class="new">
                             <a href="{% url 'gathering-center-add' %}" class="btn btn-primary btn-xl page-scroll">
+                                <span class="glyphicon glyphicon-plus"></span>
                                 {% trans 'Add a gathering center' %}
                             </a>
                         </li>
@@ -55,9 +57,9 @@
                     <h2 class="section-heading">
                         {% trans 'Resources' %}
                     </h2>
-                    <ul class="resources">
+                    <ul class="list resources">
                         {% for resource in resources %}
-                            <li>
+                            <li class="item">
                                 <a href="{% url 'resource' resource.pk %}">
                                     <h2>{{ resource.name }}</h2> -
                                     {{ resource.description|truncatechars:140 }}
@@ -66,6 +68,7 @@
                         {% endfor %}
                         <li class="new">
                             <a href="{% url 'resource-add' %}" class="btn btn-primary btn-xl page-scroll">
+                                <span class="glyphicon glyphicon-plus"></span>
                                 {% trans 'Suggest a resource' %}
                             </a>
                         </li>
