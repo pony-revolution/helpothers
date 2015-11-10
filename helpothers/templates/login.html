@@ -9,6 +9,9 @@
                     <h2 class="section-heading">
                         {% trans "Log in" %}
                     </h2>
+                    <p>
+                        {% transblock %}We require users to log in only to ensure the quality of information. We won't be using your data for anything else.{% endtransblock %}
+                    </p>
                     <a href="{% url 'social:begin' 'facebook' %}?next={{ next|default:'/' }}"
                        class="btn btn-primary btn-xl page-scroll">
                         {% trans 'Log in with Facebook' %}
