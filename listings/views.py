@@ -11,6 +11,10 @@ from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from helpothers.views_mixins import HelpOthersMetaDataMixin
 from listings.models import GatheringCenter, Resource
 
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Like, Resource
+from django.contrib.auth.models import User
+
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
@@ -87,3 +91,17 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     template_name = 'listings/resources/review.html'
 
 # Used function based views for the likes
+def like(request):
+    if request.method != 'POST':
+        return HttpResponseRedirect('/')
+    else:
+        # We get the resource object
+        resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
+
+        # then we create a like object and finally save it...
+        like = Like(content_object=resource_object, user=request.user, like=1)
+        try:
+            like.save()
+            return HttpResponse('success')
+        except:
+            return HttpResponse("An Error Occured");

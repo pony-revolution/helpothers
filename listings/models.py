@@ -89,7 +89,7 @@ class Resource(TimeStampedModel):
         return reverse('resource', args=(self.pk,))
 
 class Like(models.Model):
-    user = models.ForeignKey(UserProfile)
+    user = models.ForeignKey(User)
 
     # Generic foreign key
     content_type = models.ForeignKey(ContentType)
@@ -97,7 +97,7 @@ class Like(models.Model):
     content_object = GenericForeignKey()
 
     # Variable to hold the number of likes
-    likes = models.IntegerField(default = 0)
+    like = models.IntegerField(default = 0)
 
     def __unicode__(self):
-        return str(self.likes)
+        return str(self.like)

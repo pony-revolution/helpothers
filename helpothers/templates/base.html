@@ -70,6 +70,10 @@
     <!-- Custom Theme JavaScript -->
     <script src="{% static "js/creative.js" %}"></script>
 
+    <!-- jquery cookie libary needed for some ajax functionality in the website -->
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
     <script type="text/javascript">
         $(function() {
             $('#languages li a').click(function(e) {
@@ -80,9 +84,21 @@
                 form.submit();
             });
         });
+
+        // Sending data to the backend using ajax -->
+        $(document).ready(function(){
+          $("#like").on('click', function(){
+            $.ajax({
+              url: "{% url 'add_likes' %}",
+              method: 'POST',
+              data: {'resource_id': {{ object.pk }}},
+              success: function(data){
+                alert(data);
+              }
+            });
+          });
+        });
+
     </script>
     {% block extrabody %}{% endblock %}
 </body>
-
-
-
