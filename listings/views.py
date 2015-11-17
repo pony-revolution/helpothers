@@ -85,3 +85,5 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     Page to notify the user that the resource will be reviewed.
     """
     template_name = 'listings/resources/review.html'
+
+# Used function based views for the likes

@@ -8,6 +8,9 @@ from geoposition.fields import GeopositionField
 from markupfield.fields import MarkupField
 from model_utils.models import TimeStampedModel
 
+from profiles.models import Profile as UserProfile
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 class Region(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -84,3 +87,17 @@ class Resource(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse('resource', args=(self.pk,))
+
+class Like(models.Model):
+    user = models.ForeignKey(UserProfile)
+
+    # Generic foreign key
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField(verbose_name='Content ID')
+    content_object = GenericForeignKey()
+
+    # Variable to hold the number of likes
+    likes = models.IntegerField(default = 0)
+
+    def __unicode__(self):
+        return str(self.likes)
