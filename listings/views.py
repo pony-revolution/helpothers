@@ -9,12 +9,12 @@ from guardian.shortcuts import assign_perm
 from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from helpothers.views_mixins import HelpOthersMetaDataMixin
-from listings.models import GatheringCenter, Resource
+from listings.models import GatheringCenter, Resource, Like
 
+# Added by jonathan
+from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Like, Resource
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
@@ -90,19 +90,26 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     """
     template_name = 'listings/resources/review.html'
 
-# Used function based views for the likes
-@login_required
-def like(request):
-    if request.method != 'POST':
+
+class LikeView(View):
+    """ This view is invoked whenever a like button gets clicked on the resource details page """
+
+    def get(self, request):
         return HttpResponseRedirect('/')
-    else:
+
+    def post(self, request):
         # We get the resource object
         resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
 
-        # then we create a like object and finally save it...
-        like = Like(content_object=resource_object, user=request.user, like=1)
-        try:
-            like.save()
-            return HttpResponse('success')
-        except:
-            return HttpResponse("An Error Occured");
+        # We test whether the user already liked the resource
+        if(Like.objects.filter(object_id=request.POST.get('resource_id'), user=request.user).exists()):
+            return HttpResponse('exists')
+        else:
+            # then we create a like object and finally save it...
+            like = Like(content_object=resource_object, user=request.user)
+            like.like += 1
+            try:
+                like.save()
+                return HttpResponse('success')
+            except:
+                return HttpResponse("An Error Occured");

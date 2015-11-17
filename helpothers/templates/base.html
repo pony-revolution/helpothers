@@ -26,6 +26,8 @@
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="{% static "css/animate.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/jsPanel.css" %}" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static "css/help.css" %}" type="text/css">
@@ -66,13 +68,15 @@
     <script src="{% static "js/jquery.easing.min.js" %}"></script>
     <script src="{% static "js/jquery.fittext.js" %}"></script>
     <script src="{% static "js/wow.min.js" %}"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="{% static "js/creative.js" %}"></script>
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/jspanel/jquery.jspanel.min.js" %}"></script>
 
     <!-- jquery cookie libary needed for some ajax functionality in the website -->
     <script src="{% static 'js/jquery.cookie.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static "js/creative.js" %}"></script>
 
     <script type="text/javascript">
         $(function() {
@@ -85,7 +89,7 @@
             });
         });
 
-        // Sending data to the backend using ajax -->
+        // Sending data to the likes view using ajax and updating resource details page-->
         $(document).ready(function(){
           $("#like").on('click', function(){
             $.ajax({
@@ -93,7 +97,13 @@
               method: 'POST',
               data: {'resource_id': {{ object.pk }}},
               success: function(data){
-                alert(data);
+                if(data.indexOf('success') != -1){
+                    alert("Test Passed");
+                } else if(data.indexOf('exists') != -1){
+                    
+                } else {
+                    alert(data);
+                }
               }
             });
           });
