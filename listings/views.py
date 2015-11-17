@@ -15,6 +15,7 @@ from listings.models import GatheringCenter, Resource, Like
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
@@ -95,21 +96,24 @@ class LikeView(View):
     """ This view is invoked whenever a like button gets clicked on the resource details page """
 
     def get(self, request):
-        return HttpResponseRedirect('/')
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
 
     def post(self, request):
-        # We get the resource object
-        resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
+        if request.user.is_authenticated():
+            # We get the resource object
+            resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
 
-        # We test whether the user already liked the resource
-        if(Like.objects.filter(object_id=request.POST.get('resource_id'), user=request.user).exists()):
-            return HttpResponse('exists')
+            # We test whether the user already liked the resource
+            if(Like.objects.filter(object_id=request.POST.get('resource_id'), user=request.user).exists()):
+                return HttpResponse('exists')
+            else:
+                # then we create a like object and finally save it...
+                like = Like(content_object=resource_object, user=request.user)
+                like.like += 1
+                try:
+                    like.save()
+                    return HttpResponse('success')
+                except:
+                    return HttpResponse("An Error Occured");
         else:
-            # then we create a like object and finally save it...
-            like = Like(content_object=resource_object, user=request.user)
-            like.like += 1
-            try:
-                like.save()
-                return HttpResponse('success')
-            except:
-                return HttpResponse("An Error Occured");
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))

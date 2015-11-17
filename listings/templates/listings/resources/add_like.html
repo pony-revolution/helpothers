@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{% trans 'Add likes to a resource/object' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+    <section class="bg-dark" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans "Add new likes to an object/resource" %}
+                    </h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <table>
+                            {{ form|bootstrap }}
+                        </table>
+                        <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add' %}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{%  endblock %}

@@ -31,7 +31,7 @@ urlpatterns += i18n_patterns(
     url(r'^resource/(?P<pk>\d+)$', ResourceDetailView.as_view(), name='resource'),
     url(r'^resource/add$', ResourceCreateView.as_view(), name='resource-add'),
     url(r'^resource/review$', ReviewView.as_view(), name='resource-review'),
-    url(r'^add_likes$', LikeView.as_view(), name='add_likes'),
+    url(r'^like$', LikeView.as_view(), name='like'),
 
     url(r'accounts/profile', ProfileView.as_view(), name='account-profile'),
 

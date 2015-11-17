@@ -35,6 +35,6 @@ class ResourceAdmin(PublishMixin, admin.ModelAdmin):
 admin.site.register(Resource, ResourceAdmin)
 
 class LikeAdmin(admin.ModelAdmin):
-    list_display = ('user', 'content_object', 'like')
+    list_display = ('user', 'content_object')
 
 admin.site.register(Like, LikeAdmin)

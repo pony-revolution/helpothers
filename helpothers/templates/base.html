@@ -51,7 +51,6 @@
 
     {%  include 'menu.html' %}
 
-
     {% block header %}
     {% endblock %}
 
@@ -93,14 +92,14 @@
         $(document).ready(function(){
           $("#like").on('click', function(){
             $.ajax({
-              url: "{% url 'add_likes' %}",
+              url: "{% url 'like' %}",
               method: 'POST',
               data: {'resource_id': {{ object.pk }}},
               success: function(data){
                 if(data.indexOf('success') != -1){
                     alert("Test Passed");
                 } else if(data.indexOf('exists') != -1){
-                    
+
                 } else {
                     alert(data);
                 }
