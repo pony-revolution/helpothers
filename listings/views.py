@@ -14,7 +14,7 @@ from listings.models import GatheringCenter, Resource
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Like, Resource
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
@@ -91,6 +91,7 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     template_name = 'listings/resources/review.html'
 
 # Used function based views for the likes
+@login_required
 def like(request):
     if request.method != 'POST':
         return HttpResponseRedirect('/')

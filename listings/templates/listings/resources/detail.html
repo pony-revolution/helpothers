@@ -35,12 +35,14 @@
                 </div>
                 <!-- Likes Button -->
                 <div class="col-lg-8 col-lg-offset-2">
+                  {% if user.is_authenticated %}
                   <p>
                       <br/><a id="like" href="#" class="btn btn-default">
                           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                           {% trans "Like this Resource" %}
                       </a>
                   </p>
+                  {% endif %}
                 </div>
             </div>
         </div>
