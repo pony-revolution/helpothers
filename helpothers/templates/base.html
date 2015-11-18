@@ -93,17 +93,16 @@
           $("#like").on('click', function(){
 
             var data = '';
-
             if('{{ object.pk }}' == ''){
               var data = 0;
             } else {
-              var data = {{ object.pk }};
+              var data = '{{ object.pk }}';
             }
 
             $.ajax({
               url: "{% url 'like' %}",
               method: 'POST',
-              data: {'resource_id': {{ object.pk }}},
+              data: {'resource_id': data},
               success: function(data){
                 if(data.indexOf('success') != -1){
                     alert("Test Passed");
@@ -118,11 +117,8 @@
       });
 
       $(document).ready(function(){
-        $("#like_form").on('click', function(e){
-          e.preventDefault();
-          var resource_id = $("#like_form").serialize();
-
-          alert(resource_id);
+        $("#like_form").on('click', function(){
+          var resource_id = $("#resource_select").val();
 
           $.ajax({
             url: "{% url 'like' %}",
@@ -131,10 +127,11 @@
             success: function(data){
               if(data.indexOf('success') != -1){
                   alert("Test Passed");
+                  
               } else if(data.indexOf('exists') != -1){
-
+                  alert("You already liked this");
               } else {
-                  alert(data);
+                  location.replace(data);
               }
             }
           });

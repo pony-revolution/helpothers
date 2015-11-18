@@ -36,7 +36,7 @@
                 <!-- Likes Button -->
                 <div class="col-lg-8 col-lg-offset-2">
                   <p>
-                      <br/><a {% if user.is_authenticated %} id="like" href="#" {% else %} href="{% url 'like' %}" {% endif %} class="btn btn-default">
+                      <br/><a {% if user.is_authenticated %} id="like" href="#" {% else %} href="{% url 'login' %}" {% endif %} class="btn btn-default">
                           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                           {% trans "Like this Resource" %}
                       </a>

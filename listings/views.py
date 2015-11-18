@@ -122,3 +122,10 @@ class LikeView(TemplateView, View):
                     return HttpResponse("An Error Occured");
         else:
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+
+# prevent non authenticated users_from accessing likes view
+def login_page(request):
+    if not request.user.is_authenticated():
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    else:
+        return redirect(request.path)
