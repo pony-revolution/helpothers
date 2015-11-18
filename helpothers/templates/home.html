@@ -7,7 +7,6 @@
         <div class="header-content">
             <div class="header-content-inner">
                 {% include 'elements/logo.svg' %}
-
                 <h1>
                     {% trans 'Help Others' %}
                 </h1>
@@ -53,13 +52,14 @@
                 <ul class="list resources">
                     {% for resource in resources %}
                         <li class="item">
+                            <a href="{{ resource.url }}" class="link" target="link">
+                                {% include 'elements/item-arrow.svg' %}
+                            </a>
                             <h3>{{ resource.name }}</h3>
                             {{ resource.description|truncatechars:140 }}
                             <br/>
-                            <a href="{{ resource.url }}" class="link"
-                               target="link">
-                                <span class="glyphicon glyphicon-link"
-                                      aria-hidden="true"></span>
+                            <a href="{{ resource.url }}" class="link" target="link">
+                                <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
                                 {{ resource.url|truncatechars:80 }}
                             </a>
                         </li>
@@ -109,17 +109,19 @@
 {% block extrabody %}
 
     <script type="text/javascript">
+        var mapStyle = [{"stylers":[{"hue":"#baf4c4"},{"saturation":10}]},{"featureType":"water","stylers":[{"color":"#effefd"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]}];
         function initMap() {
 
-            var myLatLng = {
+            var mapCenter = {
                 lat: 46,
                 lng: 15
             };
             // Create a map object and specify the DOM element for display.
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: myLatLng,
+                center: mapCenter,
                 scrollwheel: false,
                 zoom: 8,
+                styles: mapStyle,
                 mapMaker: true
             });
             var markers = [];

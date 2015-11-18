@@ -503,6 +503,14 @@ ul.list li.item {
   text-align: left;
   padding: 10px 0px;
 }
+ul.list li.item svg {
+  float: right;
+  margin: 20px 0px;
+}
+ul.list li.item svg g,
+ul.list li.item svg path {
+  fill: #704b4b;
+}
 ul.list li.item img {
   float: left;
   margin-right: 10px;
