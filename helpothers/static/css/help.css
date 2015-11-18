@@ -151,7 +151,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/header-brown.jpg');
+  background-image: url('../img/header-image.jpg');
   text-align: center;
   color: white;
 }
@@ -520,7 +520,8 @@ header svg {
   width: 100px;
   height: 100px;
 }
-header svg g {
+header svg g,
+header svg path {
   fill: #78A93A;
 }
 .footer {
@@ -530,7 +531,8 @@ header svg g {
   width: 100px;
   height: 100px;
 }
-.footer svg g {
+.footer svg g,
+.footer svg path {
   fill: #F5F5F5;
 }
 .navbar-fixed-top {
