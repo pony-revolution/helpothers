@@ -91,6 +91,15 @@
         // Sending data to the likes view using ajax and updating resource details page-->
         $(document).ready(function(){
           $("#like").on('click', function(){
+
+            var data = '';
+
+            if('{{ object.pk }}' == ''){
+              var data = 0;
+            } else {
+              var data = {{ object.pk }};
+            }
+
             $.ajax({
               url: "{% url 'like' %}",
               method: 'POST',
@@ -106,8 +115,31 @@
               }
             });
           });
-        });
+      });
 
+      $(document).ready(function(){
+        $("#like_form").on('click', function(e){
+          e.preventDefault();
+          var resource_id = $("#like_form").serialize();
+
+          alert(resource_id);
+
+          $.ajax({
+            url: "{% url 'like' %}",
+            method: 'POST',
+            data: {'resource_id': resource_id},
+            success: function(data){
+              if(data.indexOf('success') != -1){
+                  alert("Test Passed");
+              } else if(data.indexOf('exists') != -1){
+
+              } else {
+                  alert(data);
+              }
+            }
+          });
+        });
+      });
     </script>
     {% block extrabody %}{% endblock %}
 </body>

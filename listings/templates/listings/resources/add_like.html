@@ -13,12 +13,12 @@
                     <h2 class="section-heading">
                         {% trans "Add new likes to a resource" %}
                     </h2>
-                    <form method="post" act>
+                    <form id="like_form" method="post">
                         {% csrf_token %}
                         <label for="resource_select">Select Resource</label>
                         <select class="form-control" name="" id="resource_select">
-                            {% for resource in resources %}
-                                <option value="{{ resource.id }}">{{ resource }}</option>
+                            {% for object in resources %}
+                                <option name="resource_id" value="{{ object.pk }}">{{ object }}</option>
                             {% endfor %}
                         </select><br/>
                         <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add Vote' %}" />
