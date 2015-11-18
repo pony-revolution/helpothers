@@ -13,10 +13,11 @@
                 </h1>
                 <hr>
                 <p>
-                    {% blocktrans %}This is the place to find how and where you
-                        can help the refugees...{% endblocktrans %}
+                    {% blocktrans %}This is the place to find how and where youcan help the refugees...{% endblocktrans %}
                 </p>
-                {#                <a href="/#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>#}
+                <a href="/#about" class="page-scroll">
+                    {% trans "About us" %}
+                </a>
             </div>
         </div>
     </header>
@@ -33,7 +34,7 @@
         </div>
     </section>
     <section id="centers">
-        <div id="map" style="height: 400px; width: 100%"></div>
+        <div id="map" style="height: 500px; width: 100%"></div>
     </section>
 
 
@@ -52,7 +53,7 @@
                 <ul class="list resources">
                     {% for resource in resources %}
                         <li class="item">
-                            <h3>{{ resource.name }}</h3> -
+                            <h3>{{ resource.name }}</h3>
                             {{ resource.description|truncatechars:140 }}
                             <br/>
                             <a href="{{ resource.url }}" class="link"
@@ -73,7 +74,7 @@
             <div class="row spacious">
                 <a href="{% url 'gathering-center-add' %}"
                    class="btn btn-primary btn-xl alt">
-                    {% trans 'Add a gathering center' %}
+                    {% trans 'Add a center' %}
                 </a>
                 <a href="{% url 'resource-add' %}"
                    class="btn btn-primary btn-xl alt">
@@ -83,10 +84,9 @@
         </div>
     </section>
 
-    <section class="bg-white" id="about">
+    <section class="bg-white footer" id="about">
         <div class="container">
-            <div class="row text-center
-            ">
+            <div class="row text-center">
                 <h2 class="dark">
                     {% trans 'About' %}
                 </h2>
@@ -95,6 +95,10 @@
                     {% blocktrans %}So you want to help? That's how you found
                         this site, right? ...{% endblocktrans %}
                 </p>
+
+
+                {% include 'elements/logo.svg' %}
+
             </div>
         </div>
     </section>
@@ -118,6 +122,9 @@
                 zoom: 8,
                 mapMaker: true
             });
+            var markers = [];
+            var i = 0;
+
             {% for center in gathering_centers %}
                 {% if center.geoposition %}
                     var myLatLng = {
@@ -125,7 +132,7 @@
                         lng: {{center.geoposition.longitude}}
                     };
                     // Create a marker and set its position.
-                    var marker = new google.maps.Marker({
+                    markers[i] = new google.maps.Marker({
                         icon: '{% static "img/map-icon.png" %}',
                         anchorPoint: google.maps.Point([21, 58]),
                         animation: google.maps.Animation.DROP,
@@ -133,8 +140,14 @@
                         position: myLatLng,
                         title: '{% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}'
                     });
+                i++;
                 {% endif %}
             {% endfor %}
+            var bounds = new google.maps.LatLngBounds();
+            for (i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i].getPosition());
+            }
+            map.fitBounds(bounds);
         }
 
     </script>

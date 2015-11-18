@@ -55,6 +55,7 @@ h2 {
   font-family: "antonioregular";
   text-transform: uppercase;
   font-size: 40px;
+  padding: 12px 0;
   &.dark {
     color: @theme-dark;
   }
@@ -66,8 +67,12 @@ h2 {
 }
 
 ul.list {
+  padding: 20px 0;
+  line-height: 2em;
   h3 {
     font-weight: bold;
+    margin: 3px 0;
+    font-size: 18px;
   }
   list-style: none;
   a:hover {
@@ -77,6 +82,7 @@ ul.list {
     border-bottom: 1px solid lighten(@theme-dark, 20%);
     overflow: hidden;
     text-align: left;
+    padding: 10px 0px;
     img {
       float: left;
       margin-right: 10px;
@@ -90,9 +96,6 @@ ul.list {
         transition: .5s;
       }
     }
-    h2 {
-      margin: 4px 0px;
-    }
   }
 }
 
@@ -105,6 +108,18 @@ header {
     }
   }
 }
+
+.footer {
+  padding-bottom: 150px;
+  svg {
+    width: 100px;
+    height: 100px;
+    g {
+      fill: @bg-light;
+    }
+  }
+}
+
 
 .navbar-fixed-top {
   border: 0;
@@ -147,6 +162,7 @@ header {
   color: white;
   font-size: 24px;
   padding: 8px 14px 0px;
+  margin: 8px 20px;
 }
 
 div.row.spacious {
