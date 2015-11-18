@@ -457,9 +457,14 @@ header .header-content {
   transform: translateY(0%);
   padding: 50px 0 20px 0;
 }
+header .header-content .header-content-inner p {
+  font-weight: bold
+  ;
+}
 header h1 {
   font-family: "antoniobold";
   color: #78A93A;
+  padding: 20px;
 }
 section {
   padding: 0;
