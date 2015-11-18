@@ -11,14 +11,17 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">
-                        {% trans "Add new likes to an object/resource" %}
+                        {% trans "Add new likes to a resource" %}
                     </h2>
-                    <form method="post">
+                    <form method="post" act>
                         {% csrf_token %}
-                        <table>
-                            {{ form|bootstrap }}
-                        </table>
-                        <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add' %}" />
+                        <label for="resource_select">Select Resource</label>
+                        <select class="form-control" name="" id="resource_select">
+                            {% for resource in resources %}
+                                <option value="{{ resource.id }}">{{ resource }}</option>
+                            {% endfor %}
+                        </select><br/>
+                        <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add Vote' %}" />
                     </form>
                 </div>
             </div>

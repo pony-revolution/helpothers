@@ -15,7 +15,7 @@ from listings.models import GatheringCenter, Resource, Like
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
@@ -92,11 +92,16 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     template_name = 'listings/resources/review.html'
 
 
-class LikeView(View):
+class LikeView(TemplateView, View):
     """ This view is invoked whenever a like button gets clicked on the resource details page """
 
     def get(self, request):
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        # return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        resources = Resource.objects.all()
+
+        return render(request, 'listings/resources/add_like.html', {
+            'resources': resources,
+        })
 
     def post(self, request):
         if request.user.is_authenticated():

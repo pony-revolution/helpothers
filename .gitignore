@@ -1,6 +1,9 @@
 # Secrets
 */secrets.py
 
+# Sqlite Database - used by jonathan in development
+*.sqlite
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
