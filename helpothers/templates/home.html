@@ -13,6 +13,8 @@
                 <p class="main">
                     {% blocktrans %}This is the place to find how and where youcan help the refugees...{% endblocktrans %}
                 </p>
+                <a data-toggle="modal" href="{% url 'gathering-center-add' %}" data-target="#modal">Click me</a>
+
                 <a href="/#about" class="page-scroll">
                     {% trans "About us" %}
                 </a>
@@ -22,11 +24,8 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="modal fade" id="modal" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     </div>
-
 
     <section class="heading">
         <div class="container">
@@ -174,7 +173,36 @@
                 context: document.body
             }).done(function (response) {
                 modal.html(response);
+                formAjaxSubmit('form', '#modal');
+            });
         });
-    })
+
+        var formAjaxSubmit = function (form, modal) {
+            $(form).submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function (xhr, ajaxOptions, thrownError) {
+                        if ($(xhr).find('.has-error').length > 0) {
+                            $(modal).html(xhr);
+                            formAjaxSubmit(form, modal);
+                        } else {
+                            $(modal).html(xhr);
+                            window.setTimeout(function(){
+                                $(modal).hide();
+                            }, 1000);
+
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        // handle response errors here
+                    }
+                });
+            });
+        }
+
     </script>
+
 {% endblock extrabody %}

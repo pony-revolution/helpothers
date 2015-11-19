@@ -17,7 +17,7 @@
                     <h2 class="section-heading">
                         {% trans "Add new gathering center" %}
                     </h2>
-                    <form method="post">
+                    <form method="post" action="{}">
                         {% csrf_token %}
                         {{ form|bootstrap }}
                         <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add' %}" />

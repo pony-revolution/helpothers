@@ -1,24 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'elements/modal.html' %}
 {% load i18n %}
+{% load bootstrap %}
+{% load static %}
 
-{% block title %}{% trans 'Resource added' %} | {{ block.super }}{% endblock %}
-
-
-{% block content %}
-
-    <section class="bg-primary" id="centers">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">
-                        {% trans 'Thanks!' %}
-                    </h2>
-                    <p>
-                        {% blocktrans %}Thank you for your submission. We'll review it as soon as possible.{% endblocktrans %}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+{% block modal_title %}
+    {% trans 'Thanks!' %}
 {% endblock %}
+
+{% block modal_body %}
+    <p>
+        {% blocktrans %}Thank you for your submission. We'll review it as soon as possible.{% endblocktrans %}
+    </p>
+    <div class="modal-footer text-right">
+        <a  data-dismiss="modal">
+            {% trans 'Cancel' %}
+        </a>
+    </div>
+{%  endblock %}
+

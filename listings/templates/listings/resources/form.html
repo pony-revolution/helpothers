@@ -8,9 +8,16 @@
 {% endblock %}
 
 {% block modal_body %}
-    {% csrf_token %}
-    <table>
-        {{ form|bootstrap }}
-    </table>
-    <input type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add' %}" />
+    <form action="{% url 'resource-add' %}" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form|bootstrap }}
+        </table>
+        <div class="modal-footer text-right">
+            <a  data-dismiss="modal">
+                {% trans 'Cancel' %}
+            </a>
+            <input type="submit" class="btn btn-primary" value="{% trans 'Add' %}" />
+        </div>
+    </form>
 {%  endblock %}
