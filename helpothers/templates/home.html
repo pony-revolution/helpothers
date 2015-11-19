@@ -22,6 +22,12 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="modal fade" id="modal" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+
+
     <section class="heading">
         <div class="container">
             <div class="row">
@@ -72,11 +78,15 @@
         <div class="container">
             <div class="row spacious">
                 <a href="{% url 'gathering-center-add' %}"
-                   class="btn btn-primary btn-xl alt">
+                   class="btn btn-primary btn-xl alt"
+                   data-toggle="modal"
+                   data-target="#modal" title="edit item">
                     {% trans 'Add a center' %}
                 </a>
                 <a href="{% url 'resource-add' %}"
-                   class="btn btn-primary btn-xl alt">
+                   class="btn btn-primary btn-xl alt"
+                   data-toggle="modal"
+                   data-target="#modal" title="edit item">
                     {% trans 'Suggest a resource' %}
                 </a>
             </div>
@@ -153,7 +163,18 @@
         }
 
     </script>
-    <script async defer
-            src="//maps.googleapis.com/maps/api/js?sensor=false&callback=initMap">
+    <script async defer src="//maps.googleapis.com/maps/api/js?sensor=false&callback=initMap">
+    </script>
+
+    <script>
+        $('#modal').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            $.ajax({
+                url: "{% url 'resource-add' %}",
+                context: document.body
+            }).done(function (response) {
+                modal.html(response);
+        });
+    })
     </script>
 {% endblock extrabody %}
