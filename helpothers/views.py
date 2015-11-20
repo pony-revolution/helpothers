@@ -13,7 +13,7 @@ class HomeView(HelpOthersMetaDataMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['gathering_centers'] = GatheringCenter.objects.filter(published=True)
-        context['resources'] = Resource.objects.filter(published=True)
+        context['resources'] = Resource.objects.filter(published=True)[0:3]
         return context
 
 
