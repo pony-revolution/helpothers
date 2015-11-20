@@ -11,65 +11,55 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="{% url 'home' %}">
-                {% include 'elements/logo.svg' %}
-                {% trans 'Help Others' %}
-            </a>
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a class="navbar-brand page-scroll" href="{% url 'home' %}">
+                        {% if user and not user.is_anonymous %}
+                            <a href="#" data-toggle="dropdown" >{{ user.get_full_name|default:user.username }} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url 'account-profile' %}">
+                                        {% trans 'My profile' %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout' %}">
+                                        {% trans 'Log out' %}
+                                    </a>
+                                </li>
+                            </ul>
+
+                        {% else %}
+                            <a  data-toggle="dropdown" href="#">
+                                {% trans 'Log in' %} {% trans 'to help' %}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                                        {% trans 'Log in with Facebook' %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+                                        {% trans 'Log in with Twitter' %}
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+
+                    </a>
+                </li>
+            </lu>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="{% url 'home' %}#resources">
-                        {% trans 'Resources' %}
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="{% url 'home' %}#centers">
-                        {% trans 'Gathering centers' %}
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="{% url 'home' %}#about">
-                        {% trans 'About' %}
-                    </a>
-                </li>
-                <li id="account">
-                    {% if user and not user.is_anonymous %}
-                        <a href="#" data-toggle="dropdown" >{{ user.get_full_name|default:user.username }} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{% url 'account-profile' %}">
-                                    {% trans 'My profile' %}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'logout' %}">
-                                    {% trans 'Log out' %}
-                                </a>
-                            </li>
-                        </ul>
 
-                    {% else %}
-                        <a  data-toggle="dropdown" href="#">
-                            {% trans 'Log in' %}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-                                    {% trans 'Log in with Facebook' %}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
-                                    {% trans 'Log in with Twitter' %}
-                                </a>
-                            </li>
-                        </ul>
-                    {% endif %}
-                </li>
                 <li id="languages">
-                    <a href="#" data-toggle="dropdown" >{% trans "Language" %} <b class="caret"></b></a>
+                    <a href="#" data-toggle="dropdown" >
+                        {% trans "Switch language" %}
+                        <b class="caret"></b>
+                    </a>
                     <form style="display: none;" action="{% url 'set_language' %}" method="post">{% csrf_token %}
                         <input name="next" type="hidden" value="{{request.path|slice:'3:'}}" />
                         <select name="language">

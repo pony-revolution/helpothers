@@ -9,8 +9,14 @@ from guardian.shortcuts import assign_perm
 from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from helpothers.views_mixins import HelpOthersMetaDataMixin
-from listings.models import GatheringCenter, Resource
+from listings.models import GatheringCenter, Resource, Like
 
+# Added by jonathan
+from django.views.generic import View
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
     model = GatheringCenter
@@ -85,3 +91,30 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     Page to notify the user that the resource will be reviewed.
     """
     template_name = 'listings/resources/review.html'
+
+
+class LikeView(LoginRequiredMixin, View):
+    """ This view is invoked whenever a like button gets clicked on the resource details page """
+
+    def get(self, request):
+        resources = Resource.objects.all()
+
+        return render(request, 'listings/resources/add_like.html', {
+            'resources': resources,
+        })
+
+    def post(self, request):
+        resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
+
+        # We test whether the user already liked the resource
+        if(Like.objects.filter(object_id=request.POST.get('resource_id'), user=request.user).exists()):
+            return HttpResponse('exists')
+        else:
+            # then we create a like object and finally save it...
+            like = Like(content_object=resource_object, user=request.user)
+            like.like += 1
+            try:
+                like.save()
+                return HttpResponse('success')
+            except:
+                return HttpResponse("An Error Occured")

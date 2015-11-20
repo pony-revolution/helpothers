@@ -26,8 +26,10 @@
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="{% static "css/animate.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.css" %}" type="text/css">
 
     <!-- Custom CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "css/help.css" %}" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,7 +51,6 @@
 
     {%  include 'menu.html' %}
 
-
     {% block header %}
     {% endblock %}
 
@@ -67,6 +68,10 @@
     <script src="{% static "js/jquery.fittext.js" %}"></script>
     <script src="{% static "js/wow.min.js" %}"></script>
 
+    <!-- jquery cookie libary needed for some ajax functionality in the website -->
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="{% static "js/creative.js" %}"></script>
 
@@ -80,9 +85,56 @@
                 form.submit();
             });
         });
+
+        // Sending data to the likes view using ajax and updating resource details page-->
+        $(document).ready(function(){
+          $("#like").on('click', function(){
+
+            var data = '';
+            if('{{ object.pk }}' == ''){
+              var data = 0;
+            } else {
+              var data = '{{ object.pk }}';
+            }
+
+            $.ajax({
+              url: "{% url 'like' %}",
+              method: 'POST',
+              data: {'resource_id': data},
+              success: function(data){
+                if(data.indexOf('success') != -1){
+                    $("#modal_text").text("Thank you for your liking this resource");
+                } else if(data.indexOf('exists') != -1){
+                    $("#modal_text").text("You've already liked this resource");
+                } else {
+                    alert(data);
+                }
+              }
+            });
+          });
+      });
+
+      $(document).ready(function(){
+        $("#like_form").on('click', function(){
+          var resource_id = $("#resource_select").val();
+
+          $.ajax({
+            url: "{% url 'like' %}",
+            method: 'POST',
+            data: {'resource_id': resource_id},
+            success: function(data){
+              if(data.indexOf('success') != -1){
+                  $("#modal_text").text("Thank you for your liking this resource");
+              } else if(data.indexOf('exists') != -1){
+                  $("#modal_text").text("You've already liked this resource");
+              } else {
+                  location.replace(data);
+              }
+            }
+          });
+        });
+      });
     </script>
+
     {% block extrabody %}{% endblock %}
 </body>
-
-
-

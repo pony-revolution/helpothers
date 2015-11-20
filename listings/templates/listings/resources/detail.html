@@ -33,7 +33,38 @@
                         </span>
                     </h3>
                 </div>
+                <!-- Likes Button -->
+                <div class="col-lg-8 col-lg-offset-2">
+                  <p>
+                      <br/><a {% if user.is_authenticated %} id="like" href="#" data-toggle="modal" data-target="#myModal" {% else %} href="{% url 'login' %}" {% endif %} class="btn btn-default">
+                          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                          {% trans "Like this Resource" %}
+                      </a>
+                      <span id="exists"></span>
+                  </p>
+                </div>
+                <!-- Model popup -->
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color: black">Thank you for your response.</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p id="modal_text" style="color: black">You've successfully like this resource.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
             </div>
         </div>
     </section>
+
 {% endblock %}

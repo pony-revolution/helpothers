@@ -1,97 +1,159 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block header %}
     <header>
         <div class="header-content">
             <div class="header-content-inner">
+                {% include 'elements/logo.svg' %}
                 <h1>
-                    {% trans 'Welcome to Help Others!' %}
+                    {% trans 'Help Others' %}
                 </h1>
-                <hr>
-                <p>
-                    {% blocktrans %}This is the place to find how and where you can help the refugees...{% endblocktrans %}
+                <p class="main">
+                    {% blocktrans %}This is the place to find how and where youcan help the refugees...{% endblocktrans %}
                 </p>
-{#                <a href="/#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>#}
+                <a href="/#about" class="page-scroll">
+                    {% trans "About us" %}
+                </a>
             </div>
         </div>
     </header>
 {% endblock %}
 
 {% block content %}
-
+    <section class="heading">
+        <div class="container">
+            <div class="row">
+                <h2>
+                    {% trans 'Gathering centers' %}
+                </h2>
+            </div>
+        </div>
+    </section>
     <section id="centers">
+        <div id="map" style="height: 500px; width: 100%"></div>
+    </section>
+
+
+    <section class="heading alt">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">
-                        {% trans 'Gathering centers' %}
-                    </h2>
-                    <ul class="list gathering-centers">
-                        {% for center in gathering_centers %}
-                            <a href="{% url 'gathering-center' center.pk %}">
-                                <li class="item">
-                                    {% include 'elements/preview-map.html' with object=center %}
-                                    <h2>{{ center.city }}</h2> -
-                                    {% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}
-                                </li>
+                <h2>
+                    {% trans 'Resources' %}
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="bg-dark" id="resources">
+        <div class="container">
+            <div class="row">
+                <ul class="list resources">
+                    {% for resource in resources %}
+                        <li class="item">
+                            <a href="{{ resource.url }}" class="link" target="link">
+                                {% include 'elements/item-arrow.svg' %}
                             </a>
-                        {% endfor %}
-                        <li class="new">
-                            <a href="{% url 'gathering-center-add' %}" class="btn btn-primary btn-xl page-scroll">
-                                <span class="glyphicon glyphicon-plus"></span>
-                                {% trans 'Add a gathering center' %}
+                            <h3>{{ resource.name }}</h3>
+                            {{ resource.description|truncatechars:140 }}
+                            <br/>
+                            <a href="{{ resource.url }}" class="link" target="link">
+                                <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                                {{ resource.url|truncatechars:80 }}
                             </a>
                         </li>
-                    </ul>
-                </div>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </section>
 
-
-    <section class="bg-light" id="resources">
+    <section class="bg-light text-center" id="about">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">
-                        {% trans 'Resources' %}
-                    </h2>
-                    <ul class="list resources">
-                        {% for resource in resources %}
-                            <li class="item">
-                                <a href="{% url 'resource' resource.pk %}">
-                                    <h2>{{ resource.name }}</h2> -
-                                    {{ resource.description|truncatechars:140 }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                        <li class="new">
-                            <a href="{% url 'resource-add' %}" class="btn btn-primary btn-xl page-scroll">
-                                <span class="glyphicon glyphicon-plus"></span>
-                                {% trans 'Suggest a resource' %}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="row spacious">
+                <a href="{% url 'gathering-center-add' %}"
+                   class="btn btn-primary btn-xl alt">
+                    {% trans 'Add a center' %}
+                </a>
+                <a href="{% url 'resource-add' %}"
+                   class="btn btn-primary btn-xl alt">
+                    {% trans 'Suggest a resource' %}
+                </a>
             </div>
         </div>
     </section>
 
-
-    <section class="bg-dark" id="about">
+    <section class="bg-white footer" id="about">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">
-                        {% trans 'About Help Others' %}
-                    </h2>
-                    <p>
-                        {% blocktrans %}So you want to help? That's how you found this site, right? ...{% endblocktrans %}
-                    </p>
-                </div>
+            <div class="row text-center">
+                <h2 class="dark">
+                    {% trans 'About' %}
+                </h2>
+
+                <p>
+                    {% blocktrans %}So you want to help? That's how you found
+                        this site, right? ...{% endblocktrans %}
+                </p>
+
+
+                {% include 'elements/logo.svg' %}
+
             </div>
         </div>
     </section>
 
 {% endblock %}
+
+
+{% block extrabody %}
+
+    <script type="text/javascript">
+        var mapStyle = [{"stylers":[{"hue":"#baf4c4"},{"saturation":10}]},{"featureType":"water","stylers":[{"color":"#effefd"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]}];
+        function initMap() {
+
+            var mapCenter = {
+                lat: 46,
+                lng: 15
+            };
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: mapCenter,
+                scrollwheel: false,
+                zoom: 8,
+                styles: mapStyle,
+                mapMaker: true
+            });
+            var markers = [];
+            var i = 0;
+
+            {% for center in gathering_centers %}
+                {% if center.geoposition %}
+                    var myLatLng = {
+                        lat: {{center.geoposition.latitude}},
+                        lng: {{center.geoposition.longitude}}
+                    };
+                    // Create a marker and set its position.
+                    markers[i] = new google.maps.Marker({
+                        icon: '{% static "img/location.svg" %}',
+                    {# icon: '{% static "img/map-icon.png" %}',#}
+                        anchorPoint: google.maps.Point([21, 58]),
+                        animation: google.maps.Animation.DROP,
+                        map: map,
+                        position: myLatLng,
+                        title: '{% if center.location_name %}{{ center.location_name }}{% else %}{{ center.address }}{% endif %}'
+                    });
+                i++;
+                {% endif %}
+            {% endfor %}
+            var bounds = new google.maps.LatLngBounds();
+            for (i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i].getPosition());
+            }
+            map.fitBounds(bounds);
+        }
+
+    </script>
+    <script async defer
+            src="//maps.googleapis.com/maps/api/js?sensor=false&callback=initMap">
+    </script>
+{% endblock extrabody %}

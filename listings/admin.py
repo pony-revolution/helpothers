@@ -1,10 +1,9 @@
 from django.contrib import admin
 
-from .models import Region, City, GatheringCenter, Resource
+from .models import Region, City, GatheringCenter, Resource, Like
 
 admin.site.register(Region)
 admin.site.register(City)
-
 
 class PublishMixin(object):
     actions = ('publish', 'unpublish')
@@ -35,4 +34,7 @@ class ResourceAdmin(PublishMixin, admin.ModelAdmin):
 
 admin.site.register(Resource, ResourceAdmin)
 
+class LikeAdmin(admin.ModelAdmin):
+    list_display = ('user', 'content_object', 'content_type', 'like')
 
+admin.site.register(Like, LikeAdmin)
