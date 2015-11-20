@@ -92,6 +92,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -213,3 +214,8 @@ META_DEFAULT_KEYWORDS = META_INCLUDE_KEYWORDS  # So that the keywords are includ
 META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = True
 META_USE_TITLE_TAG = True
+
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+SOCIAL_AUTH_BACKEND_ERROR_URL = '/login_error/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error'
+LOGIN_ERROR_URL = '/login-error'
