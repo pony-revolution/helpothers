@@ -19,6 +19,7 @@ LANGUAGES = (
   ('sl', ('Slovenscina')),
 )
 
+
 MANAGERS = ADMINS
 
 DATABASES = {

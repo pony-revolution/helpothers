@@ -102,9 +102,9 @@
               data: {'resource_id': data},
               success: function(data){
                 if(data.indexOf('success') != -1){
-                    alert("Thank you for your likeing this resource");
+                    $("#modal_text").text("Thank you for your liking this resource");
                 } else if(data.indexOf('exists') != -1){
-                    alert("You've already liked this resource");
+                    $("#modal_text").text("You've already liked this resource");
                 } else {
                     alert(data);
                 }
@@ -123,9 +123,9 @@
             data: {'resource_id': resource_id},
             success: function(data){
               if(data.indexOf('success') != -1){
-                  alert("Thank you for liking this resource");
+                  $("#modal_text").text("Thank you for your liking this resource");
               } else if(data.indexOf('exists') != -1){
-                  alert("You've already liked this resource");
+                  $("#modal_text").text("You've already liked this resource");
               } else {
                   location.replace(data);
               }
