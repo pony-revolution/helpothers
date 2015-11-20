@@ -15,6 +15,7 @@ from listings.models import GatheringCenter, Resource, Like
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 class GatheringCenterView(HelpOthersMetaDataMixin, DetailView):
@@ -92,11 +93,10 @@ class ReviewView(HelpOthersMetaDataMixin, TemplateView):
     template_name = 'listings/resources/review.html'
 
 
-class LikeView(TemplateView, View):
+class LikeView(LoginRequiredMixin, View):
     """ This view is invoked whenever a like button gets clicked on the resource details page """
 
     def get(self, request):
-        # return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
         resources = Resource.objects.all()
 
         return render(request, 'listings/resources/add_like.html', {
@@ -104,28 +104,17 @@ class LikeView(TemplateView, View):
         })
 
     def post(self, request):
-        if request.user.is_authenticated():
-            # We get the resource object
-            resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
+        resource_object = Resource.objects.get(pk=request.POST.get('resource_id'))
 
-            # We test whether the user already liked the resource
-            if(Like.objects.filter(object_id=request.POST.get('resource_id'), user=request.user).exists()):
-                return HttpResponse('exists')
-            else:
-                # then we create a like object and finally save it...
-                like = Like(content_object=resource_object, user=request.user)
-                like.like += 1
-                try:
-                    like.save()
-                    return HttpResponse('success')
-                except:
-                    return HttpResponse("An Error Occured");
+        # We test whether the user already liked the resource
+        if(Like.objects.filter(object_id=request.POST.get('resource_id'), user=request.user).exists()):
+            return HttpResponse('exists')
         else:
-            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-
-# prevent non authenticated users_from accessing likes view
-def login_page(request):
-    if not request.user.is_authenticated():
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-    else:
-        return redirect(request.path)
+            # then we create a like object and finally save it...
+            like = Like(content_object=resource_object, user=request.user)
+            like.like += 1
+            try:
+                like.save()
+                return HttpResponse('success')
+            except:
+                return HttpResponse("An Error Occured")

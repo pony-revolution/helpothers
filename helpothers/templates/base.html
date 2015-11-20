@@ -27,7 +27,6 @@
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="{% static "css/animate.min.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "css/jquery-ui.css" %}" type="text/css">
-    <link rel="stylesheet" href="{% static "css/jsPanel.css" %}" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static "css/help.css" %}" type="text/css">
@@ -67,8 +66,6 @@
     <script src="{% static "js/jquery.easing.min.js" %}"></script>
     <script src="{% static "js/jquery.fittext.js" %}"></script>
     <script src="{% static "js/wow.min.js" %}"></script>
-    <script src="{% static "js/jquery-ui.min.js" %}"></script>
-    <script src="{% static "js/jspanel/jquery.jspanel.min.js" %}"></script>
 
     <!-- jquery cookie libary needed for some ajax functionality in the website -->
     <script src="{% static 'js/jquery.cookie.js' %}"></script>
@@ -105,9 +102,9 @@
               data: {'resource_id': data},
               success: function(data){
                 if(data.indexOf('success') != -1){
-                    alert("Test Passed");
+                    alert("Thank you for your likeing this resource");
                 } else if(data.indexOf('exists') != -1){
-
+                    alert("You've already liked this resource");
                 } else {
                     alert(data);
                 }
@@ -126,10 +123,9 @@
             data: {'resource_id': resource_id},
             success: function(data){
               if(data.indexOf('success') != -1){
-                  alert("Test Passed");
-
+                  alert("Thank you for liking this resource");
               } else if(data.indexOf('exists') != -1){
-                  alert("You already liked this");
+                  alert("You've already liked this resource");
               } else {
                   location.replace(data);
               }
@@ -138,5 +134,6 @@
         });
       });
     </script>
+
     {% block extrabody %}{% endblock %}
 </body>

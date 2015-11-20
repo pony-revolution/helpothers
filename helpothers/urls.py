@@ -9,9 +9,8 @@ from helpothers.views import (
 
 from listings.views import (
     GatheringCenterView, GatheringCenterCreateView, GatheringCenterUpdateView,
-    ResourceCreateView, ResourceDetailView, ResourceUpdateView, ReviewView, LikeView, login_page
+    ResourceCreateView, ResourceDetailView, ResourceUpdateView, ReviewView, LikeView
 )
-
 
 urlpatterns = [
     # i18n
@@ -32,7 +31,6 @@ urlpatterns += i18n_patterns(
     url(r'^resource/add$', ResourceCreateView.as_view(), name='resource-add'),
     url(r'^resource/review$', ReviewView.as_view(), name='resource-review'),
     url(r'^like$', LikeView.as_view(), name='like'),
-    url(r'^login_page$', login_page, name="login"),
     url(r'accounts/profile', ProfileView.as_view(), name='account-profile'),
 
     # Authentication
