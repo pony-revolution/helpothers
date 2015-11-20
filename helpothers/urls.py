@@ -4,8 +4,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
 from helpothers.views import (
-    HomeView, LoginView, ProfileView
-)
+    HomeView, LoginView, ProfileView,
+    LoginErrorView)
 
 from listings.views import (
     GatheringCenterView, GatheringCenterCreateView, GatheringCenterUpdateView,
@@ -35,6 +35,7 @@ urlpatterns += i18n_patterns(
     url(r'accounts/profile', ProfileView.as_view(), name='account-profile'),
 
     # Authentication
+    url(r'^login-error$', LoginErrorView.as_view(), name='login-error'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': '/'}, name='logout'),

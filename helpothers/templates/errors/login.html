@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <section class="bg-dark" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans "Error" %}
+                    </h2>
+                    {% trans "There was an error loging in. Please try again." %}
+
+                    <hr />
+
+                    <a href="{% url 'social:begin' 'facebook' %}?next={{ next|default:'/' }}"
+                       class="btn btn-primary btn-xl page-scroll">
+                        {% trans 'Log in with Facebook' %}
+                    </a>
+                    <a href="{% url 'social:begin' 'twitter' %}?next={{ next|default:'/' }}"
+                       class="btn btn-primary btn-xl page-scroll">
+                        {% trans 'Log in with Twitter' %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

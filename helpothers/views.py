@@ -26,6 +26,10 @@ class LoginView(HelpOthersMetaDataMixin, TemplateView):
         return ctx
 
 
+class LoginErrorView(TemplateView):
+    template_name = 'errors/login.html'
+
+
 class ProfileView(HelpOthersMetaDataMixin, UpdateView):
     context_object_name = 'profile'
     template_name = 'accounts/profile.html'
