@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='gatheringcenter',
             name='country',
-            field=django_countries.fields.CountryField(max_length=2),
+            field=django_countries.fields.CountryField(max_length=2, null=True),
         ),
         migrations.AlterField(
             model_name='gatheringcenter',
