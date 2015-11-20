@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{% trans 'Add likes to a resource/object' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+    <section class="bg-dark" id="centers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">
+                        {% trans "Add new likes to a resource" %}
+                    </h2>
+                    <div>
+                        <label for="resource_select">Select Resource</label>
+                        <select class="form-control" name="resource_id" id="resource_select">
+                            {% for object in resources %}
+                                <option value="{{ object.pk }}">{{ object }}</option>
+                            {% endfor %}
+                        </select><br/>
+                        <a {% if not user.is_authenticated %} href="{% url 'login' %}" {% endif %}><input data-toggle="modal" data-target="#myModal" {% if user.is_authenticated %} id="like_form" {% endif %} type="submit" class="btn btn-primary btn-xl page-scroll" value="{% trans 'Add Vote' %}" /></a>
+                    </div>
+                </div>
+
+                <!-- Model popup -->
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color: black">Thank you for your response.</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p id="modal_text" style="color: black">You've successfully like this resource.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{%  endblock %}
