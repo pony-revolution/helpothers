@@ -1,7 +1,7 @@
 # Django settings for helpothers project.
 import os
 from django.core.urlresolvers import reverse_lazy
-# from secrets import *
+from secrets import *
 
 ALLOWED_HOSTS = ['127.0.0.1', 'helpothers.eu']
 DEBUG = True
@@ -22,23 +22,10 @@ LANGUAGES = (
 
 MANAGERS = ADMINS
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'helpothers',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '',
-#     }
-# }
-
-# the following database is the one i used for testing...
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'data.sqlite',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'helpothers',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
